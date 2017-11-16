@@ -26,5 +26,6 @@ This README would normally document whatever steps are necessary to get your app
 ### Who do I talk to? ###
 
 안녕하세요 선생님
+안녕 친구야
 * Repo owner or admin
 * Other community or team contact
