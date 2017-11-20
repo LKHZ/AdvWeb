@@ -1,4 +1,4 @@
-# README #
+﻿# README #
 
 This README would normally document whatever steps are necessary to get your application up and running.
 
@@ -27,5 +27,6 @@ This README would normally document whatever steps are necessary to get your app
 
 안녕하세요 선생님
 안녕 친구야
+흥칫뿡
 * Repo owner or admin
 * Other community or team contact
