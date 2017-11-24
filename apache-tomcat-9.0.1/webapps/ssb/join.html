@@ -10,12 +10,24 @@
     <title>Sports Score Board</title>
      
         
-    <!-- Bootstrap core CSS -->
-    <link href="bs/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="cssjs/join.css" rel="stylesheet">
   </head>
   <body>
+    <div class="container">
+      <form class="form-login" action="" method="POST">
+        <h2 class="form-login-heading">Sign up</h2>
+        <input type="text" class="form-control" placeholder="아이디" required autofocus>
+        <input type="password" class="form-control" placeholder="비밀번호" required>
+        <input type="password" class="form-control" placeholder="비밀번호 재확인" required>
 
+        <div id="NickNameDiv">
+          <input type="text" class="form-control" placeholder="닉네임" required autofocus>
+        </div>
+        닉네임 중복을 확인하세요.<button type="button" class="btn btn-sm btn-danger " id="checkBtn">중복확인</button>
+        <hr>
+        <button type="submit" class="btn btn-lg btn-danger btn-block">회원가입</button>
+      </form>
+    </div>
   </body>
 </html>

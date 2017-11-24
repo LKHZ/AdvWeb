@@ -1,8 +1,6 @@
 body{
     margin-top:10px;
 }
-
-
 #indexIcon{
     width:  35px;
     height: 35px;
@@ -16,8 +14,10 @@ body{
     margin-right:   30px;
     font-size: 20px;
 }
-
 #menuButton:hover{
     font-weight: bold;
     font-size: 20px;
+}
+#menu{
+    font-weight: bold;
 }
