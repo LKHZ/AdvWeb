@@ -19,12 +19,12 @@
 
     <!--for Jquery-->
     <script src = "jquery-3.2.1.js"></script>
-
+    
     <!-- login button event-->
     <script>
-      function loginClick(){
+      $('#loginbtn').on('click', function(){
         window.open('signin.html', '_self');
-      }
+      });
     </script>
   </head>
 
@@ -66,7 +66,7 @@
                     -->
                     </ul>
                     <form class="form-inline my-2 my-md-0">
-                        <button type="button" class="btn btn-danger" onclick="loginClick()">Login</button>
+                        <button type="button" class="btn btn-danger" id="loginbtn">Login</button>
                     </form>
                   </div>
                 </nav>

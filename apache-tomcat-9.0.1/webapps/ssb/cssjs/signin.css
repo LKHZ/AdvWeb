@@ -28,11 +28,34 @@ body {
 }
 .form-signin input[type="email"] {
   margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.form-signin input[type="password"] {
+  border-bottom-right-radius: 0; border-bottom-left-radius: 0; 
+} 
+.form-signin input[type="password"] { 
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+#join{
+  text-align: center;
+}
+
+#join ul{
+  padding: 0;
+  display: inline-block;
+}
+#join ul>li{
+  float:  left;
+  list-style: none;
+}
+
+#join a{
+  text-decoration: none;
+  color: black;
+}
+#join a:hover{
+  text-decoration: underline;
+}
+#join a:link a:visited a:active{
+  text-decoration: none;
 }
