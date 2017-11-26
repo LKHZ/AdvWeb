@@ -17,7 +17,7 @@
     <script>
       $(document).ready(function(){
         $('#loginbtn').on('click', function(){
-          window.open('signin.html', '_self');
+          window.open('signin.jsp', '_self');
         });
       });
     </script>
@@ -25,7 +25,7 @@
   <body>
     <div class="container">
       <header class="masthead">
-        <h3 class="text-muted"><a href="../index.html" target="_self"><img src="../img/soccer-ball-variant.png"></a><span id="forTitle">Sports Score Board</span></h3>
+        <h3 class="text-muted"><a href="../index.jsp" target="_self"><img src="../img/soccer-ball-variant.png"></a><span id="forTitle">Sports Score Board</span></h3>
         <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
           <div class="navbar-brand" id="menu">Menu</div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,7 +54,18 @@
       </header>
 
       <main role="main">
-        <h1>축구</h1>
+        <!-- 4*3 col-->
+        <div class="row">
+          <div class="col-lg-4">
+            <h1>여기에다가 축구</h1>
+          </div>
+          <div class="col-lg-4">
+            <h1>여기에다가 농구</h1>
+          </div>
+          <div class="col-lg-4">
+            <h1>여기에다가 야구</h1>
+          </div>
+        </div>
       </main>
 
       <footer class="footer">
