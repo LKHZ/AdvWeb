@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8" errorPage="errorpage/error.jsp" %>	
-
 <!doctype html>
 <html>
   <head> 
@@ -9,7 +8,7 @@ pageEncoding="UTF-8" errorPage="errorpage/error.jsp" %>
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <%-- <link rel="icon" href="img/soccer-ball-variant.png"> --%>
+    <link rel="icon" href="img/soccer-ball-variant.png">
     <title>Sports Score Board</title>
 
     <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,8 +23,6 @@ pageEncoding="UTF-8" errorPage="errorpage/error.jsp" %>
         });
       });
     </script> --%>
-    
-
   </head>
   <body>
     <div class="container">
@@ -34,36 +31,11 @@ pageEncoding="UTF-8" errorPage="errorpage/error.jsp" %>
       </jsp:include> 
 
       <main role="main">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img class="d-block w-100" src="img/soccer.png" alt="First slide">
-            </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src="img/baseball.jpg" alt="Second slide">
-            </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src="img/basketball.jpg" alt="Third slide">
-            </div>
-          </div>
-          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
+        <h1>농구</h1>
       </main>
 
       <footer class="footer">
-        <p>CopyrightÂ© Lee*2+Kang</p>
+        <p>Copyright© Lee*2+Kang</p>
       </footer>
 
     </div> <!-- /container -->
