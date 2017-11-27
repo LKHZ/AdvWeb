@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS `ssbdb`.`recomment` (
-  `recommentid` INT NOT NULL,
+  `recommentid` INT NOT NULL auto_increment,
   `recommentcontent` TINYTEXT NOT NULL,
   `recommentvalid` TINYINT NOT NULL,
   `commentid` INT NOT NULL,

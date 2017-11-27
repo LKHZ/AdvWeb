@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8" errorPage="errorpage/error.jsp" %>	
+<%@ page language="java" contentType="text/html;charset=UTF-8"
+pageEncoding="UTF-8"  %>	
+<%-- <%@ include file="initsession.jsp" %> --%>
+<%@ include file="initsession.jsp" %>
 
 <!doctype html>
 <html>
@@ -17,19 +19,16 @@ pageEncoding="UTF-8" errorPage="errorpage/error.jsp" %>
     <link type="text/css" rel="stylesheet" href="cssjs/style.css">
     <script src = "jquery-3.2.1.js"></script>
 
-    <script>
-      $(document).ready(function(){
-        $('#loginbtn').on('click', function(){
-          window.open('signin.jsp', '_self');
-        });
-      });
-    </script>
+    <%-- <jsp:include page="initsession.jsp">
+      <jsp:param name="callpage" value="header.jsp" />
+    </jsp:include> --%>
 
   </head>
 
   <body>
+      
       <header class="masthead">
-        <h3 class="text-muted"><a href="index.jsp" target="_self"><img src="img/soccer-ball-variant.png"></a><span id="forTitle">Sports Score Board</span></h3>
+      <h3 class="text-muted"><a href="index.jsp" target="_self"><img src="img/soccer-ball-variant.png"></a><span id="forTitle">Sports Score Board</span></h3>
         <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
           <div class="navbar-brand" id="menu">Menu</div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,7 +50,9 @@ pageEncoding="UTF-8" errorPage="errorpage/error.jsp" %>
               </li>
             </ul>
             <form class="form-inline my-2 my-md-0">
-              <button type="button" class="btn btn-danger" id="loginbtn">Login</button>
+              <jsp:include page="header_loginstate.jsp">
+                <jsp:param name="callpage" value="header.jsp" />
+              </jsp:include>
             </form>
           </div>
         </nav>

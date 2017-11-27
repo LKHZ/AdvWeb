@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS `ssbdb`.`comment` (
-  `commentid` INT NOT NULL,
+  `commentid` INT NOT NULL auto_increment,
   `commentcontent` TINYTEXT NOT NULL,
   `commentvalid` TINYINT NOT NULL,
   `bulletinid` INT NOT NULL,

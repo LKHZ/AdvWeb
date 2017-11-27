@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS `ssbdb`.`bulletin` (
-  `bulletinid` INT NOT NULL,
+  `bulletinid` INT NOT NULL auto_increment,
   `bulletincreatedate` TIMESTAMP NOT NULL,
   `bulletintitle` VARCHAR(45) NOT NULL,
   `bulletincontent` TEXT NULL,

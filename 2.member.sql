@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS `ssbdb`.`member` (
-  `memberid` INT NOT NULL,
+  `memberid` INT NOT NULL auto_increment,
   `memberident` VARCHAR(45) NOT NULL,
   `memberpasswd` VARCHAR(45) NOT NULL,
   `membernickname` VARCHAR(45) NOT NULL,
