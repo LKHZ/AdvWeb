@@ -22,7 +22,9 @@ pageEncoding="UTF-8"  %>
       if(session.getAttribute("logon") == "true") {
     %>
     <%= session.getAttribute("userid") %>
+    /
     <%= session.getAttribute("passwd") %>
+    /
     <button type="button" class="btn btn-danger" id="logoutbtn">Logout</button>
     <%
       }

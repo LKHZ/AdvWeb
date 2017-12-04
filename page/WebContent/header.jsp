@@ -18,7 +18,12 @@ pageEncoding="UTF-8"  %>
     <link href="cssjs/navbar.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="cssjs/style.css">
     <script src = "jquery-3.2.1.js"></script>
-
+    <style>
+      header a:link{color:#868e96; text-decoration:none;}
+      header a:visited{color:#868e96; text-decoration:none;}
+      header a:active{color:#868e96; text-decoration:none;}
+      header a:hover{color:#868e96; text-decoration:none;}
+    </style>
     <%-- <jsp:include page="initsession.jsp">
       <jsp:param name="callpage" value="header.jsp" />
     </jsp:include> --%>
@@ -28,7 +33,7 @@ pageEncoding="UTF-8"  %>
   <body>
       
       <header class="masthead">
-      <h3 class="text-muted"><a href="index.jsp" target="_self"><img src="img/soccer-ball-variant.png"></a><span id="forTitle">Sports Score Board</span></h3>
+      <h3 class="text-muted"><a href="index.jsp" target="_self"><img src="img/soccer-ball-variant.png"><span id="forTitle">Sports Score Board</span></a></h3>
         <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
           <div class="navbar-brand" id="menu">Menu</div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
