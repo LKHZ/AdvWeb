@@ -2,6 +2,7 @@
 pageEncoding="UTF-8"  %>	
 <%-- <jsp:useBean id="connect" class="ssb.connect.ConnectUserBean" scope="page" />
 <jsp:setProperty name="connect" property="*" /> --%>
+<%@ include file="initsession.jsp" %> <%-- 세션 만료시 세션 초기화 --%>
 <html>
   <head>
     <script>
@@ -21,6 +22,7 @@ pageEncoding="UTF-8"  %>
     <%
       if(session.getAttribute("logon") == "true") {
     %>
+    /
     <%= session.getAttribute("userid") %>
     /
     <%= session.getAttribute("passwd") %>
