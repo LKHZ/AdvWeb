@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8"
 pageEncoding="UTF-8"  %>
 
-<jsp:useBean id="signin" class="ssb.signin.SigninBean" scope="page" />
+<jsp:useBean id="signin" class="ssb.dbmanage.SigninBean" scope="page" />
 <jsp:setProperty name="signin" property="*" />
 <%-- <jsp:useBean id="connect" class="ssb.connect.ConnectUserBean" scope="page" />
 <jsp:setProperty name="connect" property="*" /> --%>
