@@ -14,6 +14,7 @@ pageEncoding="UTF-8"  %>
     <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="cssjs/navbar.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="cssjs/style.css">
+    <link type="text/css" rel="stylesheet" href="cssjs/board.css">
     <script src = "jquery-3.2.1.js"></script>
 
     <%-- <script>
@@ -31,15 +32,57 @@ pageEncoding="UTF-8"  %>
       </jsp:include> 
 
       <main role="main">
-        <h1>농구</h1>
-      </main>
+        <div class="row">
+      		<div class="col-lg-4 col-md-4">
+      			<h1>좌측!!!!!!!!!!!!!!!!!!!</h1>
+      		</div> 
+      		
+      		<div class="col-lg-8 col-md-8">
+ 	     		<table class="table table-sm table-striped">
+ 					<thead class="thead-dark">
+   						<tr>
+      						<th scope="col" id="no">No</th>
+      						<th scope="col" id="cat">Cat</th>
+      						<th scope="col" id="sub" style="text-align: center;">Subject</th>
+      						<th scope="col" id="nam">Name</th>
+      						<th scope="col" id="dat">Date</th>
+    					</tr>
+  					</thead>
+  					<tbody>
+    					<tr>
+      						<th scope="row">1</th>
+      						<td>Sport</td>
+      						<td><a href="#">sub1111</a></td>
+      						<td>lee</td>
+      						<td>2017.12.07</td>
+    					</tr>
+    					<tr>
+      						<th scope="row">2</th>
+      						<td>Sport</td>
+      						<td><a href="#">sub2222</a></td>
+      						<td>lee</td>
+      						<td>2017.12.07</td>
+    					</tr>
+    					<tr>
+      						<th scope="row">3</th>
+      						<td>Sport</td>
+      						<td><a href="#">sub33333</a></td>
+      						<td>lee</td>
+      						<td>2017.12.07</td>
+    					</tr>
+  					</tbody>
+				</table>
+      			<div>
+	       			<button type="button" class="btn btn-sm btn-danger " id="write" style="float: right;">글쓰기</button>
+      			</div>
+      		</div>
+      	</div>
+      </main> 
 
       <footer class="footer">
         <p>Copyright© Lee*2+Kang</p>
       </footer>
-
     </div> <!-- /container -->
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

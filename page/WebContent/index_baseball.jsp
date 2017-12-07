@@ -24,16 +24,21 @@ pageEncoding="UTF-8"  %>
         <jsp:param name="callpage" value="index_baseball.jsp" />
       </jsp:include>
 
-      <main role="main">
-        <h1>야구</h1>
-      </main>
+   	  <main role="main">
+      	<div class="row">
+    		<div class="col-lg-4 col-md-4">
+    			<h1>좌측!!!!!!!!!!!!!!!!!!!</h1>
+       		</div> 
+       		<div class="col-lg-8 col-md-8">
+       			<h1>우측!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</h1>
+       		</div>
+       	</div>
+      </main> 
 
       <footer class="footer">
         <p>Copyright© Lee*2+Kang</p>
       </footer>
-
     </div> <!-- /container -->
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

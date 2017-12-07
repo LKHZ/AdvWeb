@@ -1,0 +1,14 @@
+.table a{
+	color: black;	
+}
+.table a:hover{
+	color: black;
+}
+
+
+<!-- 컬럼 너비 -->
+#no{ width: 10%; }	
+#cat{width: 5%;	 }
+#sub{width: 50%; }
+#nam{width: 15%;	}
+#dat{width: auto; }

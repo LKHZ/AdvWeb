@@ -40,17 +40,14 @@ pageEncoding="UTF-8"  %>
           </button>
           <div class="collapse navbar-collapse" id="navbarsExample09">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item active" id="menuButton">
-                <a class="nav-link" href="index_live.jsp" target="_self">Live<span class="sr-only">(current)</span></a>
+              <li class="nav-item active">
+                <a class="nav-link" href="index_soccer.jsp" target="_self" id="menuButton">축구<span class="sr-only">(current)</span></a>
               </li>
-              <li class="nav-item" id="menuButton">
-                <a class="nav-link" href="index_soccer.jsp" target="_self">축구</a>
+              <li class="nav-item">
+                <a class="nav-link" href="index_basketball.jsp" target="_self" id="menuButton">농구</a>
               </li>
-              <li class="nav-item" id="menuButton">
-                <a class="nav-link" href="index_basketball.jsp" target="_self">농구</a>
-              </li>
-              <li class="nav-item" id="menuButton">
-                <a class="nav-link" href="index_baseball.jsp" target="_self">야구</a>
+              <li class="nav-item">
+                <a class="nav-link" href="index_baseball.jsp" target="_self" id="menuButton">야구</a>
               </li>
             </ul>
             <form class="form-inline my-2 my-md-0">
