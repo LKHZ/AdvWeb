@@ -1,0 +1,317 @@
+ body {
+     margin: 0;
+ }
+ /*Background*/
+ 
+ #back {
+     position: absolute;
+     width: 100%;
+     height: 100%
+ }
+ /*Navbar*/
+ 
+ .nav-bar {
+     /*fixed on top*/
+     position: fixed;
+     width: 100%;
+     height: 59px;
+     background-color: #b0eaf0;
+     /* Sit on top */
+     z-index: 100;
+ }
+ /*logo*/
+ 
+ #logo {
+     width: 12%;
+     height: 85%;
+     margin: 0.3% 0% 0% 6%;
+     /*placed left*/
+     float: left;
+ }
+ /*menu button(NEWS,ENTERTAIN,INFORMATION)*/
+ 
+ .nav-menu {
+     /*placed left*/
+     float: left;
+     width: 27%;
+     height: 100%;
+     margin-left: 3%;
+ }
+ /*each button property*/
+ 
+ .nav-button {
+     /*placed left*/
+     float: left;
+     width: auto;
+     height: 100%;
+     background-color: #b0eaf0;
+     /*font color*/
+     color: #2896A7;
+     border: none;
+     display: inline-block;
+     /*if mouseover, cursor change to finger*/
+     cursor: auto;
+ }
+ /*button mouseover property*/
+ 
+ .nav-button:hover {
+     border-bottom: 8px solid #2896A7;
+ }
+ /*button onclick property*/
+ 
+ .nav-button.onclick {
+     border-bottom: 8px solid #2896A7;
+ }
+ /*search*/
+ 
+ .nav-search {
+    margin-right: 5%;
+    float: right;
+    width: 30%;
+    height: 100%;
+ }
+ /*search input box*/
+ 
+ #nav-search-input {
+     padding: 10px;
+     background-color: #b0eaf0;
+     /*font color*/
+     color: white;
+     border: 0.1px white solid;
+     display: inline-block;
+     width: 80%;
+     margin: 12px 0px 12px 0px;
+     float: left;
+ }
+ /*search box place holder font color*/
+ 
+ ::-webkit-input-placeholder {
+     color: white;
+ }
+ /*search icon*/
+ 
+ #nav-search-icon {
+     border: 0.1px white solid;
+     display: inline-block;
+     width: 9%;
+     height: 59%;
+     float: left;
+     margin: 12px 0px 12px 0px;
+ }
+ /**/
+ 
+ #blank {
+     width: 100%;
+     height: 110px;
+ }
+ /*Content*/
+ 
+ .content {
+     width: 88%;
+     height: 120%;
+     margin: auto;
+     margin-bottom: 5%;
+ }
+ /*title*/
+ 
+ .content_title {
+     width: 100%;
+     height: 10%;
+     font-size: 26pt;
+     font-weight: 700;
+ }
+ /*button to link each page*/
+ 
+ .btn_content_title {
+     /*if mouseover, cursor change to finger*/
+     cursor: auto;
+     width: auto;
+     height: 100%;
+     font-size: 26pt;
+     font-weight: 700;
+     border: none;
+     display: inline-block;
+     /*background have no color*/
+     background-color: rgba(255, 255, 255, 0);
+ }
+ /*space for content imgs*/
+ 
+ .content_main {
+     background-color: #E6E6E6;
+     width: 100%;
+     height: 90%;
+ }
+ /*first content*/
+ 
+ .content_load {
+     margin: 4% 0% 2.5% 0%;
+     float: left;
+     width: 94%;
+     height: 89%;
+ }
+ /*second content, if you click btn_next you can see*/
+ 
+ .content_load_img2 {
+     margin: 0% 0.5% 2% 0.5%!important;
+ }
+ /*img*/
+ 
+ .content_load_img {
+     position: relative;
+     float: left;
+     height: 48%;
+     width: 19%;
+     margin: 0% 0% 1% 1%;
+ }
+ /*main img*/
+ 
+ .content_load_main_img {
+     float: left;
+     height: 98%;
+     width: 39%;
+     margin: 0%;
+ }
+ 
+ .content_img {
+     width: 100%;
+     height: 100%;
+ }
+ /*back, next button*/
+ 
+ .btn_side {
+     padding: 19.5% 0px 22% 0px;
+     float: left;
+     width: 3%;
+     height: 7%;
+ }
+ /*button to show first content*/
+ 
+ .btn_back {
+     position: absolute;
+     bottom: auto;
+     left: auto;
+     display: inline-block;
+     border: none;
+     box-shadow: none;
+     /*background img*/
+     background: url(../img/icon_back.png) no-repeat;
+     /*background img have full size*/
+     background-size: contain;
+     width: 3%;
+     height: 5%;
+ }
+ 
+ .btn_next {
+     position: absolute;
+     bottom: auto;
+     right: auto;
+     display: inline-block;
+     border: none;
+     box-shadow: none;
+     /*background img*/
+     background: url(../img/icon_next.png) no-repeat;
+     /*background img have full size*/
+     background-size: contain;
+     width: 3%;
+     height: 5%;
+ }
+ /*Modal*/
+ /*frame to show articles*/
+ 
+ .frame {
+     width: 80%;
+     height: 84%;
+     border: 0px;
+     position: absolute;
+     left: 9.5%;
+     top: 4%;
+ }
+ /* modal background */
+ 
+ .modal {
+     /* Hidden by default */
+     display: none;
+     /* Stay in place */
+     position: fixed;
+     /* Sit on top */
+     z-index: 100;
+     padding-top: 4%;
+     left: 0;
+     top: 0;
+     width: 100%;
+     height: 100%;
+     /* Black w/ opacity */
+     background-color: rgba(0, 0, 0, 0.4);
+ }
+ /* modal content */
+ 
+ .modal_content {
+     background-color: #3D3D3D;
+     width: 100%;
+     height: 100%;
+     /*border shape*/
+     border-radius: 0.5em;
+ }
+ /*space for article*/
+ 
+ .modal_content_main {
+     padding: 0% 3% 0% 3%;
+     float: left;
+     width: 70%;
+     height: 100%;
+     background-color: white;
+     /*border shpae*/
+     border-radius: 0.5em 0em 0em 0.5em;
+ }
+ /*space for author*/
+ 
+ .modal_user {
+     width: 22%;
+     float: left;
+     height: 33%;
+     margin-left: 1%;
+     border-bottom: 1px solid white;
+ }
+ /*photo of author*/
+ 
+ .user_img {
+     margin: 15% 33% 4% 34%;
+     width: 33%;
+     height: 38%;
+ }
+ /*information of author*/
+ 
+ .user_info {
+     padding: 24%;
+     color: white;
+     font-size: 15px;
+ }
+ /*space for article*/
+ 
+ .modal_text {
+     margin-top: 3%;
+     width: 100%;
+     height: 73%;
+     /*if article content so long, make scroll*/
+     overflow: scroll;
+     /*scrollar hidden in Internet Explorer */
+     -ms-overflow-style: none;
+ }
+ /*scrollbar hidden in chrome*/
+ 
+ ::-webkit-scrollbar {
+     display: none;
+ }
+ /* button to close modal*/
+ 
+ .close {
+     float: left;
+     margin-top: 1%;
+     margin-left: 21%;
+ }
+ /*if mouseover to close button, cursor change to finger*/
+ 
+ .close:hover,
+ .close:focus {
+     cursor: pointer;
+ }
