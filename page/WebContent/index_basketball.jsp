@@ -28,14 +28,32 @@ pageEncoding="UTF-8"  %>
   <body>
     <div class="container">
       <jsp:include page="header.jsp">
-        <jsp:param name="callpage" value="index_baseball.jsp" />
+        <jsp:param name="callpage" value="index_basketball.jsp" />
       </jsp:include> 
 
       <main role="main">
         <div class="row">
       		<div class="col-lg-4 col-md-4">
-      			<h1>좌측!!!!!!!!!!!!!!!!!!!</h1>
-      		</div> 
+      			<div class="row">
+      				<div class="container">
+      					
+      				<jsp:include page="RTGame.jsp">
+       					<jsp:param name="game" value="index_basketball.jsp" />
+      				</jsp:include>
+      						 
+      				</div>
+      			</div>
+      			<div class="row">
+      				<div class="container">
+      					
+      				<jsp:include page="TeamRank.jsp">
+       					<jsp:param name="game" value="index_basketball.jsp" />
+      				</jsp:include>
+      						 
+      				</div>
+      			</div>
+      			
+      		</div>
       		
       		<div class="col-lg-8 col-md-8">
  	     		<table class="table table-sm table-striped">

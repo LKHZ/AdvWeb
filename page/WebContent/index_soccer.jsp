@@ -27,7 +27,7 @@ pageEncoding="UTF-8"  %>
   <body>
     <div class="container">
       <jsp:include page="header.jsp">
-        <jsp:param name="callpage" value="index_baseball.jsp" />
+        <jsp:param name="callpage" value="index_soccer.jsp" />
       </jsp:include> 
 
       <main role="main">
