@@ -16,19 +16,12 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public class UpdateBean{
-
-	public static void main(String[] args) {
-		//SqlChk connection = new SqlChk();
-		//System.out.println("관리자 여부 : " + connection.isAdmin("admin", "admin"));
-		UpdateBean a = new UpdateBean();
-		a.UpdateData();
-	}
-	private Connection con;
-	private Statement st;
-	private String sql;
-	public void UpdateData() {
+public class UpdateBean extends Thread{
+	public void run() {
 		try {
+			String sql;
+			Statement st;
+			Connection con;
 			while(true) {
 				String urlstr;
 				//OpenAPI call하는 URL
@@ -129,7 +122,21 @@ public class UpdateBean{
 		{
 			System.out.println("연결오류");
 		}
-		
+	}
+
+	public static void main(String[] args) {
+		//SqlChk connection = new SqlChk();
+		//System.out.println("관리자 여부 : " + connection.isAdmin("admin", "admin"));
+		UpdateBean a = new UpdateBean();
+		a.UpdateData();
+	}
+	public void UpdateData() {
+		try {
+			UpdateBean thJson = new UpdateBean();
+			thJson.start();
+		}catch(Exception e) {
+			System.out.println("Thread Error");
+		}
 	}
 		
 }
