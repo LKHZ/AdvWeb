@@ -30,7 +30,7 @@ pageEncoding="UTF-8"  %>
   <body>
     <div class="container">
         <form method="post" action="bulletinwrite_doit.jsp">
-        	<input type=hidden name=board value=<%= request.getAttribute("board") %>>
+        	<input type=hidden name=board value=<%= session.getAttribute("board") %>>
  	     	<table class="table">
   				<tbody>
   					<tr>

@@ -23,6 +23,10 @@ pageEncoding="UTF-8"  %>
         });
       });
     </script> --%>
+    <%
+    	session.setAttribute("board", "soccer");
+		session.setAttribute("page", "1");
+    %>
   </head>
    <body>
     <div class="container">
@@ -52,43 +56,9 @@ pageEncoding="UTF-8"  %>
       		</div>
       		
       		<div class="col-lg-8">
- 	     		<table class="table table-sm table-striped">
- 					<thead class="thead-dark">
-   						<tr>
-      						<th scope="col" id="no">No</th>
-      						<th scope="col" id="cat">Cat</th>
-      						<th scope="col" id="sub" style="text-align: center;">Subject</th>
-      						<th scope="col" id="nam">Name</th>
-      						<th scope="col" id="dat">Date</th>
-    					</tr>
-  					</thead>
-  					<tbody>
-    					<tr>
-      						<th scope="row">1</th>
-      						<td>Sport</td>
-      						<td><a href="#">sub1111</a></td>
-      						<td>lee</td>
-      						<td>2017.12.07</td>
-    					</tr>
-    					<tr>
-      						<th scope="row">2</th>
-      						<td>Sport</td>
-      						<td><a href="#">sub2222</a></td>
-      						<td>lee</td>
-      						<td>2017.12.07</td>
-    					</tr>
-    					<tr>
-      						<th scope="row">3</th>
-      						<td>Sport</td>
-      						<td><a href="#">sub33333</a></td>
-      						<td>lee</td>
-      						<td>2017.12.07</td>
-    					</tr>
-  					</tbody>
-				</table>
-      			<div>
-	       			<button type="button" class="btn btn-sm btn-danger " id="write" style="float: right;">글쓰기</button>
-      			</div>
+						<iframe width="100%" height="1000px" src="board.jsp" frameborder="0">
+ 	     		
+						</iframe>
       		</div>
       	</div>
       </main> 

@@ -21,6 +21,7 @@
 <body>
 	<%
 		String boardName = request.getParameter("board");
+		String userSeq = session.getAttribute("userseq").toString();
 		int boardNum;
 		if(boardName.equals("baseball")) {
 			boardNum = 1;
@@ -36,7 +37,7 @@
 			%>
 				<script>
 					window.alert("게시판이 선택되지 않았습니다." + <%= boardName %> + "   " + <%= boardNum %>);
-					window.open("board.jsp?game="+<%= boardName %>+"&page=1", "_self");
+					window.open("board.jsp", "_self");
 				</script>
 			<%
 			return;
@@ -44,6 +45,7 @@
 		board.setBoardNum(boardNum);
 		board.setTitle(request.getParameter("title"));
 		board.setContent(request.getParameter("content"));
+		board.setUserSeq(Integer.parseInt(userSeq));
 		int num = board.bulletinCreate();
 		
 		switch(num) {
@@ -51,16 +53,18 @@
 		%>
 			<script>
 				window.alert("새 글 생성에 성공하였습니다.");
-				window.open("board.jsp?game="+<%= boardName %>+"&page=1", "_self");
+				window.open("board.jsp", "_self");
 			</script>
 		<%
 			break;
 		default:
 		%>
 			<%= num %>
+			<%= boardName %>
+			<%= boardNum %>
 			<script>
 				window.alert("새 글 생성에 실해하였습니다.");
-				window.open("board.jsp??game="+<%= boardName %>+"&page=1", "_self");
+				window.open("board.jsp", "_self");
 			</script>
 		<%
 		}
