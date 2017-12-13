@@ -14,7 +14,6 @@ pageEncoding="UTF-8"  %>
     <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="cssjs/navbar.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="cssjs/style.css">
-    <link type="text/css" rel="stylesheet" href="cssjs/board.css">
     <script src = "jquery-3.2.1.js"></script>
 
     <%-- <script>
@@ -25,17 +24,32 @@ pageEncoding="UTF-8"  %>
       });
     </script> --%>
   </head>
-  <body>
+   <body>
     <div class="container">
       <jsp:include page="header.jsp">
-        <jsp:param name="callpage" value="index_baseball.jsp" />
+        <jsp:param name="callpage" value="index_basketball.jsp" />
       </jsp:include> 
 
       <main role="main">
         <div class="row">
-      		<div class="col-lg-4 col-md-4">
-      			<h1>좌측!!!!!!!!!!!!!!!!!!!</h1>
-      		</div> 
+      		<div class="col-lg-4 col-md-2">
+      			<div class="row mb-2">
+      				<div class="container">
+      				<jsp:include page="RTGame_basketball.jsp">
+       					<jsp:param name="game" value="index_basketball.jsp" />
+      				</jsp:include>
+      						 
+      				</div>
+      			</div>
+      			<div class="row">
+      				<div class="container">
+      				<jsp:include page="TeamRank_basketball.jsp">
+       					<jsp:param name="game" value="index_basketball.jsp" />
+      				</jsp:include>
+      						 
+      				</div>
+      			</div>
+      		</div>
       		
       		<div class="col-lg-8 col-md-8">
  	     		<table class="table table-sm table-striped">
@@ -79,9 +93,6 @@ pageEncoding="UTF-8"  %>
       	</div>
       </main> 
 
-      <footer class="footer">
-        <p>Copyright© Lee*2+Kang</p>
-      </footer>
     </div> <!-- /container -->
 
     <!-- Bootstrap core JavaScript
