@@ -14,49 +14,95 @@ pageEncoding="UTF-8"  %>
     <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="cssjs/navbar.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="cssjs/style.css">
-    <link type="text/css" rel="stylesheet" href="cssjs/board.css">
-    <script src = "jquery-3.2.1.js"></script>
+	<link type="text/css" rel="stylesheet" href="cssjs/board.css">
+	
+	<script src = "jquery-3.2.1.js"></script>
 
-    <%-- <script>
-      $(document).ready(function(){
+
+	<%--$(function{
         $('#loginbtn').on('click', function(){
           window.open('signin.jsp', '_self');
         });
       });
     </script> --%>
+
   </head>
   <body>
     <div class="container">
       <jsp:include page="header.jsp">
-        <jsp:param name="callpage" value="index_basketball.jsp" />
+        <jsp:param name="callpage" value="index_baseball.jsp" />
       </jsp:include> 
 
       <main role="main">
         <div class="row">
       		<div class="col-lg-4 col-md-4">
-      			<div class="row mb-2">
-      				<div class="container">
-      					
-      				<jsp:include page="RTGame_basketball.jsp">
-       					<jsp:param name="game" value="index_basketball.jsp" />
-      				</jsp:include>
-      						 
-      				</div>
+   				<!-- 라이브 경기 -->	
+      			<div>
+      			<center>
+      				<div class="input-group date" style="width: 60%;">
+      					<input type="text" class="form-control" id="datepick" size=12>
+      				</div>	
+				</center>
+      				<table class="table table-sm">
+      					<tbody>
+      						<tr>
+      							<th colspan="3"><center>KBL</center></th>
+      						</tr>
+      						<tr style="height: 30px;">
+      							<td>
+      								<div>팀1</div>
+      							</td>
+      							<td>
+      								<div>시간, 스코어</div>
+      							</td>
+      							<td>
+      								<div>팀2</div>
+      							</td>
+      						</tr>
+      					</tbody>
+      				</table>
       			</div>
-      			<div class="row">
-      				<div class="container">
-      					
-      				<jsp:include page="TeamRank_basketball.jsp">
-       					<jsp:param name="game" value="index_basketball.jsp" />
-      				</jsp:include>
-      						 
-      				</div>
+				<!-- 시즌 순위 -->
+      			<div>
+      				&nbsp;&nbsp;팀 순위
+					<table class="table table-sm">
+						<thead>
+							<tr>
+								<th scope="col" id="ran"></th>
+								<th scope="col" id="team">팀명</th>	
+								<th scope="col" id="win">승</th>	
+								<th scope="col" id="lose">패</th>	
+								<th scope="col" id="draw">무</th>	
+								<th scope="col" id="pervic">승률</th>	
+							</tr>
+						</thead>	
+						<tbody>
+							<tr>
+								<th scope="row">1</th>
+								<td>서울SK</td>
+								<td>14</td>
+								<td>5</td>
+								<td>0</td>
+								<td>0.737</td>
+							</tr>
+							<tr>
+								<th scope="row">2</th>
+								<td>원주 DB</td>
+								<td>13</td>
+								<td>6</td>
+								<td>0</td>
+								<td>0.722</td>
+							</tr>
+						
+						</tbody>
+					</table>
       			</div>
-      			
-      		</div>
+      		</div> 
       		
+      		<!-- 우측 게시판 -->
       		<div class="col-lg-8 col-md-8">
  	     		<table class="table table-sm table-striped">
+	     			<!-- 게시판 헤드 -->
  					<thead class="thead-dark">
    						<tr>
       						<th scope="col" id="no">No</th>
@@ -66,6 +112,7 @@ pageEncoding="UTF-8"  %>
       						<th scope="col" id="dat">Date</th>
     					</tr>
   					</thead>
+  					<!-- 게시글 -->
   					<tbody>
     					<tr>
       						<th scope="row">1</th>
@@ -97,6 +144,9 @@ pageEncoding="UTF-8"  %>
       	</div>
       </main> 
 
+      <footer class="footer">
+        <p>Copyright© Lee*2+Kang</p>
+      </footer>
     </div> <!-- /container -->
 
     <!-- Bootstrap core JavaScript
@@ -106,5 +156,8 @@ pageEncoding="UTF-8"  %>
     <script>window.jQuery || document.write('<script src="bootstrap/assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="bootstrap/assets/js/vendor/popper.min.js"></script>
     <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    
+    
+  
   </body>
 </html>
