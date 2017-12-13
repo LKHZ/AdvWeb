@@ -26,14 +26,9 @@ pageEncoding="UTF-8"  %>
     </script> --%>
   </head>
   <body>
-  <jsp:useBean class = "ssb.scoredata.AllDataBean" id="ADB" scope = "request"/>
-  <jsp:useBean class = "ssb.scoredata.UpdateBean" id="UDB" scope = "session"/>
-  
   <%@ page import="org.json.simple.JSONArray"%>
   <%@ page import="org.json.simple.JSONObject" %>
   <%@ page import = "org.json.simple.parser.JSONParser"%>
-  <%
-  	//UDB.UpdateData(); %>
     <div class="container">
       <jsp:include page="header.jsp">
         <jsp:param name="callpage" value="index_baseball.jsp" />

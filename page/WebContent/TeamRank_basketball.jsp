@@ -16,7 +16,6 @@
 </head>
 <body>
 <jsp:useBean class = "ssb.makeview.TSVBean" id="TSV" scope = "page"/></jsp>
-<jsp:useBean class = "ssb.scoredata.UpdateBean" id="UDB" scope = "page"/></jsp>
 	<main role="main">
 		<%@ page import="java.util.*"%>
 		<%TSV.setSportsnum(3); %>
