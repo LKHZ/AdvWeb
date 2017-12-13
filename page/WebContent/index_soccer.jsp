@@ -24,26 +24,75 @@ pageEncoding="UTF-8"  %>
       });
     </script> --%>
   </head>
-  <body>
+   <body>
     <div class="container">
       <jsp:include page="header.jsp">
-        <jsp:param name="callpage" value="index_soccer.jsp" />
+        <jsp:param name="callpage" value="index_basketball.jsp" />
       </jsp:include> 
 
       <main role="main">
         <div class="row">
-       		<div class="col-lg-4 col-md-4">
-       			<h1>좌측!!!!!!!!!!!!!!!!!!!</h1>
-       		</div> 
-       		<div class="col-lg-8 col-md-8">
-       			<h1>우측!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</h1>
-       		</div>
-        </div>
-      </main>
+      		<div class="col-lg-4 col-md-2">
+      			<div class="row mb-2">
+      				<div class="container">
+      				<jsp:include page="RTGame_soccer.jsp">
+       					<jsp:param name="game" value="index_basketball.jsp" />
+      				</jsp:include>
+      						 
+      				</div>
+      			</div>
+      			<div class="row">
+      				<div class="container">
+      				<jsp:include page="TeamRank_soccer.jsp">
+       					<jsp:param name="game" value="index_basketball.jsp" />
+      				</jsp:include>
+      						 
+      				</div>
+      			</div>
+      		</div>
+      		
+      		<div class="col-lg-8 col-md-8">
+ 	     		<table class="table table-sm table-striped">
+ 					<thead class="thead-dark">
+   						<tr>
+      						<th scope="col" id="no">No</th>
+      						<th scope="col" id="cat">Cat</th>
+      						<th scope="col" id="sub" style="text-align: center;">Subject</th>
+      						<th scope="col" id="nam">Name</th>
+      						<th scope="col" id="dat">Date</th>
+    					</tr>
+  					</thead>
+  					<tbody>
+    					<tr>
+      						<th scope="row">1</th>
+      						<td>Sport</td>
+      						<td><a href="#">sub1111</a></td>
+      						<td>lee</td>
+      						<td>2017.12.07</td>
+    					</tr>
+    					<tr>
+      						<th scope="row">2</th>
+      						<td>Sport</td>
+      						<td><a href="#">sub2222</a></td>
+      						<td>lee</td>
+      						<td>2017.12.07</td>
+    					</tr>
+    					<tr>
+      						<th scope="row">3</th>
+      						<td>Sport</td>
+      						<td><a href="#">sub33333</a></td>
+      						<td>lee</td>
+      						<td>2017.12.07</td>
+    					</tr>
+  					</tbody>
+				</table>
+      			<div>
+	       			<button type="button" class="btn btn-sm btn-danger " id="write" style="float: right;">글쓰기</button>
+      			</div>
+      		</div>
+      	</div>
+      </main> 
 
-      <footer class="footer">
-        <p>Copyright© Lee*2+Kang</p>
-      </footer>
     </div> <!-- /container -->
 
     <!-- Bootstrap core JavaScript

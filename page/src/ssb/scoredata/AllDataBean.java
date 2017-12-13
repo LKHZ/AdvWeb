@@ -35,7 +35,7 @@ public class AllDataBean {
         	int lastday;
         	boolean s=true;
         	
-        	for(int i=11; i<=12; i++) {
+        	for(int i=12; i<=12; i++) {
         		if(s==false) {break;}
         		calendar.set(2017,i-1,1);
             	lastday=calendar.getActualMaximum(Calendar.DATE);
@@ -65,7 +65,6 @@ public class AllDataBean {
         				int sportsid;
         				
         				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-        				
         				//날씨 정보를 받아온다.
         				bf = new BufferedReader(new InputStreamReader(url.openStream()));
         				

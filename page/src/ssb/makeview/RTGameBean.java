@@ -6,162 +6,161 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 
-public class RTGameBean {
-	private String userid;
-	private String passwd;
-	private int SoccerNum=0;
-	private int BaseballNum=0;
-	private int BasketballNum=0;
-	private String htName = null;
-	private String atName = null;
-	private String htLogo = null;
-	private String atLogo = null;
-	private int htScore =0;
-	private int atScore =0;
-	private String leagueName=null;
+class RealTimeGame{
+	String htName;
+	String atName;
+	String htLogo;
+	String atLogo;
+	int htScore=0;
+	int atScore=0;
+	String leagueName;
 	
-	public void getCount() {
-		 try{
-			 Connection conn = null;
-			 PreparedStatement pstmt = null, ps = null;
-			
-			// �뜲�씠�꽣踰좎씠�뒪 �뿰寃곌��젴 �젙蹂대�� 臾몄옄�뿴濡� �꽑�뼵
-			 String jdbc_driver = "com.mysql.jdbc.Driver";
-			 String jdbc_url = "jdbc:mysql://localhost/ssbdb?useSSL=false";
-			 Class.forName(jdbc_driver);
-			 conn = DriverManager.getConnection(jdbc_url, "root", "111111");
+	RealTimeGame(){};
+}
+
+public class RTGameBean {
+	private RealTimeGame[] rtg;
+	private int size=0;
+	
+	public static void main(String[] args) {
+		RTGameBean a = new RTGameBean();
+		a.setValue(1);
+	}
+	public String getatLogo(int num) {
+		if(this.size ==0) {
+			return "0";
+		}
+		else {
+			return this.rtg[num].atLogo;
+		}
 		
-			 String sql = "select gameid from game where gamestatus='진행';";
-			 pstmt = conn.prepareStatement(sql);
-			 ResultSet rs = pstmt.executeQuery();
-			 while(rs.next()) {
-				 String ssql = "select sportsid from team where teamid = any(select hometeamid from `participated team` where gameid = "+ rs.getInt(1)+");";
-				 ps = conn.prepareStatement(ssql);
-				 ResultSet rss = ps.executeQuery();
-				 while(rss.next()) {	
-					 if(rss.getInt(1) == 1) {
-						 this.SoccerNum +=1;
-					 }
-					 else if(rss.getInt(1) == 2) {
-						 this.BaseballNum+=1;
-					 }
-					 else {
-						 this.BasketballNum+=1;
-					 }
-				 }
-			 }
-		 }
-		catch(Exception e) {
-			System.out.println("SigninBean : " + e);
+	}
+	public String gethtLogo(int num) {
+		if(this.size ==0) {
+			return "0";
+		}
+		else {
+			return this.rtg[num].htLogo;
+		}
+	
+	}
+	public int getatScore(int num) {
+		if(this.size ==0) {
+			return 0;
+		}
+		else {
+			return this.rtg[num].atScore;
+		}
+		
+	}
+	public int gethtScore(int num) {
+		if(this.size ==0) {
+			return 0;
+		}
+		else {
+			return this.rtg[num].htScore;
+		}
+		
+	}
+	public String gethtName(int num) {
+		if(this.size==0) {
+			return "0";
+		}
+		else {
+			return this.rtg[num].htName;
+		}
+		
+	}
+	public String getatName(int num) {
+		if(this.size ==0) {
+			return "0";
+		}
+		return this.rtg[num].atName;
+	}
+	public String getLeagueName(int num) {
+		if(this.size ==0) {
+			return "0";
+		}
+		else {
+			return this.rtg[num].leagueName;
 		}
 	}
+	public int getSize() {
+		return this.size;
+	}
 	
-	public void getValue() {
-		 
-		 Connection conn = null;
-		 PreparedStatement pstmt = null, ps = null;
-			
-		// �뜲�씠�꽣踰좎씠�뒪 �뿰寃곌��젴 �젙蹂대�� 臾몄옄�뿴濡� �꽑�뼵
+	public void setValue(int sptnum) {
+		Connection conn = null;
+		PreparedStatement pstmt = null, ps = null, pps=null;	
 		String jdbc_driver = "com.mysql.jdbc.Driver";
 		String jdbc_url = "jdbc:mysql://localhost/ssbdb?useSSL=false";
-			
 		try {
+			ResultSet rs, rss, rsss;
 			Class.forName(jdbc_driver);
 			conn = DriverManager.getConnection(jdbc_url, "root", "111111");
+			String sql, ssql;
 			
-			String sql;		
-			sql = "select p.hometeamid,p.awayteamid, g.leagueid, g.gamestatusdetail from game as g join `participated team` as p on p.gameid=g.gameid where g.gamestatus = '진행'";
-			pstmt = conn.prepareStatement(sql);
-			ResultSet rs = pstmt.executeQuery();
+			sql= "select leagueid from league where sportsid = "+sptnum+";";
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
 			while(rs.next()) {
-				String ssql = "select teamname, teamlogopath from team where teamid= "+ rs.getInt(1)+";";
-				ps = conn.prepareStatement(ssql);
-				ResultSet rss = ps.executeQuery();
+				ssql = "select count(*) from game where gamestatus='진행' and leagueid="+rs.getInt(1)+";";
+				pstmt = conn.prepareStatement(ssql);
+				rss = pstmt.executeQuery();
 				while(rss.next()) {
-					this.htName = rss.getString(1);
-					this.htLogo = rss.getString(2);
+					this.size += rss.getInt(1);
 				}
-				
-				ssql = "select teamname, teamlogopath from team where teamid= "+ rs.getInt(2)+";";
-				ps = conn.prepareStatement(ssql);
-				rss = ps.executeQuery();
-				while(rss.next()) {
-					this.atName = rss.getString(1);
-					this.atLogo = rss.getString(2);	
-				}
-				ssql = "select leaguename from league where leagueid= "+ rs.getInt(3)+";";
-				ps = conn.prepareStatement(ssql);
-				rss = ps.executeQuery();
-				while(rss.next()) {
-					this.leagueName = rss.getString(1);
-				}
-				String rtdata = rs.getString(4);
-               	String rtgamedata[];
-               	rtgamedata = rtdata.split(",|:");
-               	this.htScore = Character.getNumericValue(rtgamedata[1].charAt(2));
-               	this.atScore = Character.getNumericValue(rtgamedata[3].charAt(2));
-				//System.out.println(rs.getInt(1) + " " + rs.getInt(2) + " " + rs.getInt(3) + " " + rs.getString(4));
 			}
-			rs.close();
-			pstmt.close();
-			conn.close();		
+			if(this.size !=0) {
+				this.rtg= new RealTimeGame[this.size];
+				for(int i=0; i<this.size; i++) {
+					this.rtg[i] = new RealTimeGame();
+				}
+				sql= "select leagueid from league where sportsid = "+sptnum+";";
+				ps = conn.prepareStatement(sql);
+				rs = ps.executeQuery();
+				int i=0;
+				while(rs.next()) {
+					ssql = "select p.hometeamid,p.awayteamid, g.gamestatusdetail from game as g join `participated team` as p on p.gameid=g.gameid where g.gamestatus = '진행' and g.leagueid="+rs.getInt(1)+";";
+					pstmt = conn.prepareStatement(ssql);
+					rss = pstmt.executeQuery();
+					while(rss.next()) {
+						String sssql = "select teamname, teamlogopath from team where teamid= "+ rss.getInt(1)+";";
+						pps = conn.prepareStatement(sssql);
+						rsss = pps.executeQuery();
+						while(rsss.next()) {
+							
+							this.rtg[i].htName = rsss.getString(1);
+							this.rtg[i].htLogo = rsss.getString(2);
+						}
+						
+						sssql = "select leaguename from league where leagueid= "+ rs.getInt(1)+";";
+						pps = conn.prepareStatement(sssql);
+						rsss = pps.executeQuery();
+						while(rsss.next()) {
+							this.rtg[i].leagueName=rsss.getString(1);
+						}
+
+	                	String rsdata = rss.getString(3);
+	                	String gamedata[];
+	                	gamedata = rsdata.split("\"");
+						this.rtg[i].htScore = Integer.parseInt(gamedata[3]);
+						this.rtg[i].atScore = Integer.parseInt(gamedata[7]);
+						sssql = "select teamname, teamlogopath from team where teamid= "+ rss.getInt(2)+";";
+						pps = conn.prepareStatement(sssql);
+						rsss = pps.executeQuery();
+						while(rsss.next()) {
+							this.rtg[i].atName = rsss.getString(1);
+							this.rtg[i].atLogo = rsss.getString(2);
+						}
+						i++;
+					}
+				}
+			}
+			
+		conn.close();		
 		}catch(Exception e) {
 				System.out.println("SigninBean : " + e);
 		}
 	 }
-
-	public String getUserid() {
-		return userid;
-	}
-
-
-	public void setUserid(String userid) {
-		this.userid = userid;
-	}
-
-
-	public String getPasswd() {
-		return passwd;
-	}
-
-
-	public void setPasswd(String passwd) {
-		this.passwd = passwd;
-	}
-	
-	public boolean checkUser() {
-		// 濡쒓렇�씤 �꽦怨� �뿬遺�
-		boolean success = false;
-		
-		// �뜲�씠�꽣踰좎씠�뒪 �뿰寃� 愿��젴 蹂��닔 �꽑�뼵
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		
-		// �뜲�씠�꽣踰좎씠�뒪 �뿰寃곌��젴 �젙蹂대�� 臾몄옄�뿴濡� �꽑�뼵
-		String jdbc_driver = "com.mysql.jdbc.Driver";
-		String jdbc_url = "jdbc:mysql://localhost/ssbdb?useSSL=false";
-		
-		try {
-			Class.forName(jdbc_driver);
-			conn = DriverManager.getConnection(jdbc_url, "root", "");
-			String sql = "select p.hometeamid,p.awayteamid, g.leagueid, g.gamestatusdetail from game as g join `participated team` as p on p.gameid=g.gameid where g.gamestatus = '종료'";
-			pstmt = conn.prepareStatement(sql);
-			ResultSet rs = pstmt.executeQuery();
-		
-			while(rs.next()) {
-				System.out.println(rs.getInt(1) + " " + rs.getInt(2) + " " + rs.getInt(3) + " " + rs.getInt(4));
-			}
-			
-			rs.close();
-			pstmt.close();
-			conn.close();
-			
-		}
-		catch(Exception e) {
-			System.out.println("SigninBean : " + e);
-		}
-
-		return success;
-		
-	}
 }

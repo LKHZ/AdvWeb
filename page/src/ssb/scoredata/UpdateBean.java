@@ -9,11 +9,14 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import org.apache.commons.daemon.Daemon;
+import org.apache.commons.daemon.DaemonContext;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public class UpdateBean {
+public class UpdateBean{
 
 	public static void main(String[] args) {
 		//SqlChk connection = new SqlChk();
@@ -21,31 +24,29 @@ public class UpdateBean {
 		UpdateBean a = new UpdateBean();
 		a.UpdateData();
 	}
-	
 	private Connection con;
 	private Statement st;
 	private String sql;
 	public void UpdateData() {
 		try {
-			String urlstr;
-			for(int i=0; i<3; i++) {
+			while(true) {
+				String urlstr;
 				//OpenAPI callÇÏ´Â URL
 				/*String urlstr = "https://api.scoreapi.co.kr/matches?apiKey=evr488quxrj30hxkn41lfu0absrskr2v&sportsName=baseball&date=20170503&nationSeq=47";*/
 				Calendar calendar = Calendar.getInstance();
+				for(int i=0; i<3; i++) {
 				if(i==0) {
-					//urlstr = "https://api.scoreapi.co.kr/matches?apiKey=evr488quxrj30hxkn41lfu0absrskr2v&sportsName=soccer&date="+calendar.get(Calendar.YEAR)+String.format("%02d", calendar.get(Calendar.MONTH)+1)+String.format("%02d", calendar.get(Calendar.DAY_OF_MONTH))+"&nationSeq=47";
-					urlstr = "https://api.scoreapi.co.kr/matches?apiKey=evr488quxrj30hxkn41lfu0absrskr2v&sportsName=soccer&date=20170812&nationSeq=47";
+					urlstr = "https://api.scoreapi.co.kr/matches?apiKey=evr488quxrj30hxkn41lfu0absrskr2v&sportsName=soccer&date="+calendar.get(Calendar.YEAR)+String.format("%02d", calendar.get(Calendar.MONTH)+1)+String.format("%02d", calendar.get(Calendar.DAY_OF_MONTH))+"&nationSeq=47";
+					//urlstr = "https://api.scoreapi.co.kr/matches?apiKey=evr488quxrj30hxkn41lfu0absrskr2v&sportsName=soccer&date=20170812&nationSeq=47";
 				}
 				else if(i==1) {
-					//urlstr = "https://api.scoreapi.co.kr/matches?apiKey=evr488quxrj30hxkn41lfu0absrskr2v&sportsName=baseball&date="+calendar.get(Calendar.YEAR)+String.format("%02d", calendar.get(Calendar.MONTH)+1)+String.format("%02d", calendar.get(Calendar.DAY_OF_MONTH))+"&nationSeq=47";
-					urlstr = "https://api.scoreapi.co.kr/matches?apiKey=evr488quxrj30hxkn41lfu0absrskr2v&sportsName=baseball&date=20170812&nationSeq=47";
-					
+					urlstr = "https://api.scoreapi.co.kr/matches?apiKey=evr488quxrj30hxkn41lfu0absrskr2v&sportsName=baseball&date="+calendar.get(Calendar.YEAR)+String.format("%02d", calendar.get(Calendar.MONTH)+1)+String.format("%02d", calendar.get(Calendar.DAY_OF_MONTH))+"&nationSeq=47";
+					//urlstr = "https://api.scoreapi.co.kr/matches?apiKey=evr488quxrj30hxkn41lfu0absrskr2v&sportsName=baseball&date=20170812&nationSeq=47";
 				}
 				else {
-					//urlstr = "https://api.scoreapi.co.kr/matches?apiKey=evr488quxrj30hxkn41lfu0absrskr2v&sportsName=basketball&date="+calendar.get(Calendar.YEAR)+String.format("%02d", calendar.get(Calendar.MONTH)+1)+String.format("%02d", calendar.get(Calendar.DAY_OF_MONTH))+"&nationSeq=47";
-					urlstr = "https://api.scoreapi.co.kr/matches?apiKey=evr488quxrj30hxkn41lfu0absrskr2v&sportsName=basketball&date=20170812&nationSeq=47";
+					urlstr = "https://api.scoreapi.co.kr/matches?apiKey=evr488quxrj30hxkn41lfu0absrskr2v&sportsName=basketball&date="+calendar.get(Calendar.YEAR)+String.format("%02d", calendar.get(Calendar.MONTH)+1)+String.format("%02d", calendar.get(Calendar.DAY_OF_MONTH))+"&nationSeq=47";
+					//urlstr = "https://api.scoreapi.co.kr/matches?apiKey=evr488quxrj30hxkn41lfu0absrskr2v&sportsName=basketball&date=20170812&nationSeq=47";
 				}
-				
 				URL url = new URL(urlstr);
 				BufferedReader bf;
 				String line;
@@ -118,9 +119,9 @@ public class UpdateBean {
 					st.executeUpdate(sql);   				
 				}
 				bf.close();
-			}	
-        			//sql = "select * from sports";
-        			//rs=st.executeQuery(sql);
+				}
+				Thread.sleep(30000);
+			}
 		}catch(ClassNotFoundException e) {
 			e.printStackTrace();
 			System.out.println("DB Driver Error!");

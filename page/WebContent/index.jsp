@@ -24,10 +24,15 @@ pageEncoding="UTF-8"  %>
         });
       });
     </script> --%>
-    
-
   </head>
   <body>
+  <jsp:useBean class = "ssb.scoredata.AllDataBean" id="ADB" scope = "request"/>
+  <jsp:useBean class = "ssb.scoredata.UpdateBean" id="UDB" scope = "session"/>
+  
+  <% ADB.AllData(); %>
+  <% UDB.UpdateData(); %>
+  
+  
     <div class="container">
       <jsp:include page="header.jsp">
         <jsp:param name="callpage" value="index_baseball.jsp" />
@@ -61,10 +66,12 @@ pageEncoding="UTF-8"  %>
           </a>
         </div>
       </main>
-
+	
+	<div class"fixed-bottom">
       <footer class="footer">
         <p>CopyrightÂ© Lee*2+Kang</p>
       </footer>
+      </div>
 
     </div> <!-- /container -->
 
@@ -76,5 +83,6 @@ pageEncoding="UTF-8"  %>
     <script>window.jQuery || document.write('<script src="bootstrap/assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="bootstrap/assets/js/vendor/popper.min.js"></script>
     <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    
   </body>
 </html>

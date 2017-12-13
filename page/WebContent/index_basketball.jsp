@@ -34,10 +34,10 @@ pageEncoding="UTF-8"  %>
       <main role="main">
         <div class="row">
       		<div class="col-lg-4 col-md-4">
-      			<div class="row">
+      			<div class="row mb-2">
       				<div class="container">
       					
-      				<jsp:include page="RTGame.jsp">
+      				<jsp:include page="RTGame_basketball.jsp">
        					<jsp:param name="game" value="index_basketball.jsp" />
       				</jsp:include>
       						 
@@ -46,7 +46,7 @@ pageEncoding="UTF-8"  %>
       			<div class="row">
       				<div class="container">
       					
-      				<jsp:include page="TeamRank.jsp">
+      				<jsp:include page="TeamRank_basketball.jsp">
        					<jsp:param name="game" value="index_basketball.jsp" />
       				</jsp:include>
       						 
@@ -97,9 +97,6 @@ pageEncoding="UTF-8"  %>
       	</div>
       </main> 
 
-      <footer class="footer">
-        <p>Copyright© Lee*2+Kang</p>
-      </footer>
     </div> <!-- /container -->
 
     <!-- Bootstrap core JavaScript
