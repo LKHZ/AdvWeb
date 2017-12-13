@@ -59,6 +59,7 @@
 						<%				
 						for ( int i = 0; i <TSV.getSize() ; i++ ) {
 						%>
+						<tr>
 							<th scope="row"><%=i+1%></th>
 							<td><%=TSV.getTeamName(i) %>
 							<td><%=TSV.getTeamWin(i) %></td>
@@ -92,6 +93,7 @@
 						<%				
 						for ( int i = 0; i <TSV.getSize() ; i++ ) {
 						%>
+						<tr>
 							<th scope="row"><%=i+1%></th>
 							<td><%=TSV.getTeamName(i) %>
 							<td><%=TSV.getTeamWin(i) %></td>

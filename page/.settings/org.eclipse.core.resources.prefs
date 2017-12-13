@@ -1,4 +1,7 @@
 eclipse.preferences.version=1
 encoding//WebContent/index.jsp=UTF-8
 encoding//WebContent/signin.jsp=UTF-8
+encoding//src/ssb/dbmanage/BoardBean.java=UTF-8
+encoding//src/ssb/dbmanage/JoinBean.java=UTF-8
+encoding//src/ssb/dbmanage/SigninBean.java=UTF-8
 encoding//src/ssb/makeview/RTGameBean.java=UTF-8

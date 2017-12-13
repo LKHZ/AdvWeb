@@ -8,11 +8,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
     <title>Sports Score Board</title>
-
     <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="cssjs/navbar.css" rel="stylesheet">
+    
     <link type="text/css" rel="stylesheet" href="cssjs/style.css">
     <script src = "jquery-3.2.1.js"></script>
+    <script src = "DataTables/datatables.min.js"></script>
+    <script src = "Datatables/datatables.js"></script>
 </head>
 <body>
 <jsp:useBean class = "ssb.makeview.TSVBean" id="TSV" scope = "page"/>
@@ -43,9 +45,9 @@
 				
 				<td><% TSV.setleagueNum(j); %></td>
 				&nbsp;<%=TSV.getLeagueName() %>
-				<table class="table table-sm">
+				<table id="example" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
 					<thead>
-						<tr>
+						<tr id = "target">
 							<th scope="col" id="ran"></th>
 							<th scope="col" id="team">팀명</th>	
 							<th scope="col" id="win">승</th>	
@@ -59,6 +61,7 @@
 						<%				
 						for ( int i = 0; i <TSV.getSize() ; i++ ) {
 						%>
+						<tr>
 							<th scope="row"><%=i+1%></th>
 							<td><%=TSV.getTeamName(i) %>
 							<td><%=TSV.getTeamWin(i) %></td>
@@ -69,14 +72,17 @@
 						<%}%>						
 					</tbody>
 				</table>
+				<script>
+
+      </script>
 			</div>
                     <%	}
           		else{
           		%>
           			 <div class = "carousel-item">
-				</td><td><% TSV.setleagueNum(j); %>
+				<% TSV.setleagueNum(j); %>
 				&nbsp;<%=TSV.getLeagueName() %>
-				<table class="table table-sm">
+				<table id="example1" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
 					<thead>
 						<tr>
 							<th scope="col" id="ran"></th>
@@ -92,16 +98,21 @@
 						<%				
 						for ( int i = 0; i <TSV.getSize() ; i++ ) {
 						%>
+						<tr>
 							<th scope="row"><%=i+1%></th>
 							<td><%=TSV.getTeamName(i) %>
 							<td><%=TSV.getTeamWin(i) %></td>
 							<td><%=TSV.getTeamLose(i) %></td>
 							<td><%=TSV.getTeamSame(i) %></td>
 							<td><%=TSV.getRate(i) +"%" %></td>
+							
 						</tr>
 						<%}%>						
 					</tbody>
 				</table>
+				<script>
+
+      </script>
 			</div>
           		<% }
           		} %>
@@ -117,6 +128,8 @@
             <span class="sr-only">Next</span>
           </a>
       </main>
+      
+      
 
 </body>
 </html>

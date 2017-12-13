@@ -62,33 +62,33 @@ public class JoinBean {
 	public boolean duplicationCheckIdent(String ident) {
 		this.checkedUserid = false;
 		
-		// 데이터베이스 연결 관련 변수 선언
+		// �뜲�씠�꽣踰좎씠�뒪 �뿰寃� 愿��젴 蹂��닔 �꽑�뼵
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
-		// 데이터베이스 연결관련 정보를 문자열로 선언
+		// �뜲�씠�꽣踰좎씠�뒪 �뿰寃곌��젴 �젙蹂대�� 臾몄옄�뿴濡� �꽑�뼵
 		String jdbc_driver = "com.mysql.jdbc.Driver";
 		String jdbc_url = "jdbc:mysql://localhost/ssbdb?useSSL=false";
 
 		try {
-			// JDBC 드라이버 로드
+			// JDBC �뱶�씪�씠踰� 濡쒕뱶
 			Class.forName(jdbc_driver);
 
-			// 데이터베이스 연결정보를 이용해 Connection 인스턴스 확보
-			conn = DriverManager.getConnection(jdbc_url, "root", "1313");
+			// �뜲�씠�꽣踰좎씠�뒪 �뿰寃곗젙蹂대�� �씠�슜�빐 Connection �씤�뒪�꽩�뒪 �솗蹂�
+			conn = DriverManager.getConnection(jdbc_url, "root", "111111");
 
-			// Connection 클래스의 인스턴스로부터 SQL문 작성을 위한 Statement 준비
+			// Connection �겢�옒�뒪�쓽 �씤�뒪�꽩�뒪濡쒕��꽣 SQL臾� �옉�꽦�쓣 �쐞�븳 Statement 以�鍮�
 			String sql = "select memberident from member";
 			pstmt = conn.prepareStatement(sql);
 
 			ResultSet rs = pstmt.executeQuery();
 
-			// // userid가 있는경우 값을 입력한 경우 SQL문을 수행
+			// // userid媛� �엳�뒗寃쎌슦 媛믪쓣 �엯�젰�븳 寃쎌슦 SQL臾몄쓣 �닔�뻾
 			// if(userid != null) {
 			// pstmt.executeQuery();
 			// }
 
-			// 매 row를 불러옴
+			// 留� row瑜� 遺덈윭�샂
 			while (rs.next()) {
 				if (ident.equals(rs.getString(1))) {
 					this.checkedUserid = true;
@@ -110,34 +110,34 @@ public class JoinBean {
 	public boolean duplicationCheckNick(String nick) {
 		this.checkedNick = false;
 		
-		// 데이터베이스 연결 관련 변수 선언
+		// �뜲�씠�꽣踰좎씠�뒪 �뿰寃� 愿��젴 蹂��닔 �꽑�뼵
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
-		// 데이터베이스 연결관련 정보를 문자열로 선언
+		// �뜲�씠�꽣踰좎씠�뒪 �뿰寃곌��젴 �젙蹂대�� 臾몄옄�뿴濡� �꽑�뼵
 		String jdbc_driver = "com.mysql.jdbc.Driver";
 		String jdbc_url = "jdbc:mysql://localhost/ssbdb?useSSL=false";
 
 		try {
-			// JDBC 드라이버 로드
+			// JDBC �뱶�씪�씠踰� 濡쒕뱶
 			Class.forName(jdbc_driver);
 
-			// 데이터베이스 연결정보를 이용해 Connection 인스턴스 확보
-			conn = DriverManager.getConnection(jdbc_url, "root", "1313");
+			// �뜲�씠�꽣踰좎씠�뒪 �뿰寃곗젙蹂대�� �씠�슜�빐 Connection �씤�뒪�꽩�뒪 �솗蹂�
+			conn = DriverManager.getConnection(jdbc_url, "root", "111111");
 
-			// Connection 클래스의 인스턴스로부터 SQL문 작성을 위한 Statement 준비
+			// Connection �겢�옒�뒪�쓽 �씤�뒪�꽩�뒪濡쒕��꽣 SQL臾� �옉�꽦�쓣 �쐞�븳 Statement 以�鍮�
 			String sql = "select membernickname from member";
 			pstmt = conn.prepareStatement(sql);
 
 
 			ResultSet rs = pstmt.executeQuery();
 
-			// // userid가 있는경우 값을 입력한 경우 SQL문을 수행
+			// // userid媛� �엳�뒗寃쎌슦 媛믪쓣 �엯�젰�븳 寃쎌슦 SQL臾몄쓣 �닔�뻾
 			// if(userid != null) {
 			// pstmt.executeQuery();
 			// }
 
-			// 매 row를 불러옴
+			// 留� row瑜� 遺덈윭�샂
 			while (rs.next()) {
 				if (nick.equals(rs.getString(1))) {
 					this.checkedNick = true;
@@ -157,7 +157,7 @@ public class JoinBean {
 	}
 	
 	public int joinUser() {
-		// 회원가입 성공 여부
+		// �쉶�썝媛��엯 �꽦怨� �뿬遺�
 		int join = 0;
 		
 		if(userid == null) {
@@ -180,15 +180,15 @@ public class JoinBean {
 		//}
 		else {
 
-			// 데이터베이스 연결 관련 변수 선언
+			// �뜲�씠�꽣踰좎씠�뒪 �뿰寃� 愿��젴 蹂��닔 �꽑�뼵
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 
-			// 데이터베이스 연결관련 정보를 문자열로 선언
+			// �뜲�씠�꽣踰좎씠�뒪 �뿰寃곌��젴 �젙蹂대�� 臾몄옄�뿴濡� �꽑�뼵
 			String jdbc_driver = "com.mysql.jdbc.Driver";
 			String jdbc_url = "jdbc:mysql://localhost/ssbdb?useSSL=false&useUnicode=true&characterEncoding=ISO-8859-1";
 			
-			// 현재 시간 받아오기
+			// �쁽�옱 �떆媛� 諛쏆븘�삤湲�
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 			Calendar cal = Calendar.getInstance();
 			String time = sdf.format(cal.getTime());
@@ -207,13 +207,13 @@ public class JoinBean {
 			Timestamp timestamp = new Timestamp(date.getTime());
 
 			try {
-				// JDBC 드라이버 로드
+				// JDBC �뱶�씪�씠踰� 濡쒕뱶
 				Class.forName(jdbc_driver);
 
-				// 데이터베이스 연결정보를 이용해 Connection 인스턴스 확보
-				conn = DriverManager.getConnection(jdbc_url, "root", "1313");
+				// �뜲�씠�꽣踰좎씠�뒪 �뿰寃곗젙蹂대�� �씠�슜�빐 Connection �씤�뒪�꽩�뒪 �솗蹂�
+				conn = DriverManager.getConnection(jdbc_url, "root", "111111");
 
-				// Connection 클래스의 인스턴스로부터 SQL문 작성을 위한 Statement 준비
+				// Connection �겢�옒�뒪�쓽 �씤�뒪�꽩�뒪濡쒕��꽣 SQL臾� �옉�꽦�쓣 �쐞�븳 Statement 以�鍮�
 				
 				
 				String sql = "insert into member(memberident, memberpasswd, membernickname, memberjoindate)"
