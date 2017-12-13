@@ -16,8 +16,6 @@
 </head>
 <body>
 <jsp:useBean class = "ssb.makeview.TSVBean" id="TSV" scope = "page"/>
-<%@ page imporit="./Json/java-json.jar" %>
-<%@ page imporit="./Json/java-simple-1.1.1.jar" %>
 	<main role="main">
 		<%@ page import="java.util.*"%>
 		<%TSV.setSportsnum(2); %>
