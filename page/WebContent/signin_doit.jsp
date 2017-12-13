@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8"
-pageEncoding="UTF-8"  %>
+pageEncoding="UTF-8" %>
+
+<!doctype html>
 
 <jsp:useBean id="signin" class="ssb.dbmanage.SigninBean" scope="page" />
 <jsp:setProperty name="signin" property="*" />
 <%-- <jsp:useBean id="connect" class="ssb.connect.ConnectUserBean" scope="page" />
 <jsp:setProperty name="connect" property="*" /> --%>
 
-
-<!doctype html>
 <html>
   <head> 
     <meta charset="utf-8">
@@ -28,15 +28,14 @@ pageEncoding="UTF-8"  %>
       signin.setPasswd(request.getParameter("passwd"));
       if(!signin.checkUser()) {
     %>
-    <script> window.alert("로그인에 실패 하셨습니다."); </script>
-    <jsp:forward page="signin.jsp">
-      <jsp:param name="callpage" value="signin_doit.jsp" />
-    </jsp:forward>
+        <script>
+          window.alert("로그인에 실패 하셨습니다.");
+          window.open("signin.jsp", "_self");
+        </script>
     <%
       }
       else {
     %>
-    <script> window.alert("로그인에 성공 하셨습니다."); </script>
     <%
         //connect.setUserid(signin.getUserid());
         //connect.setPasswd(signin.getPasswd());
@@ -46,9 +45,11 @@ pageEncoding="UTF-8"  %>
       session.setAttribute("userid", signin.getUserid());
       session.setAttribute("passwd", signin.getPasswd());
     %>
-    <jsp:forward page="index.jsp">
-      <jsp:param name="callpage" value="signin_doit.jsp" />
-    </jsp:forward>
+      <script>
+        window.alert("로그인에 성공 하셨습니다.");
+        window.open("index.jsp", "_self");
+      </script>
+      
     <%
       }
     %>
