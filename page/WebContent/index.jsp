@@ -29,8 +29,8 @@ pageEncoding="UTF-8"  %>
   <jsp:useBean class = "ssb.scoredata.AllDataBean" id="ADB" scope = "request"/>
   <jsp:useBean class = "ssb.scoredata.UpdateBean" id="UDB" scope = "session"/>
   
-  <% ADB.AllData(); %>
-  <% UDB.UpdateData(); %>
+  <% //ADB.AllData(); %>
+  <% //UDB.UpdateData(); %>
   
   
     <div class="container">
