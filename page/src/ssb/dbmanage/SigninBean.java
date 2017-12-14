@@ -39,9 +39,9 @@ public class SigninBean {
 		this.passwd = passwd;
 	}
 	
-	public boolean checkUser() {
+	public int checkUser() {
 		// 로그인 성공 여부
-		boolean success = false;
+		int id = 0;
 		
 		// 데이터베이스 연결 관련 변수 선언
 		Connection conn = null;
@@ -59,7 +59,7 @@ public class SigninBean {
 			conn = DriverManager.getConnection(jdbc_url, "root", "1313");
 			
 			// Connection 클래스의 인스턴스로부터 SQL문 작성을 위한 Statement 준비
-			String sql = "select memberpasswd from member where memberident = ?";
+			String sql = "select memberpasswd, memberid from member where memberident = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userid);
 			
@@ -75,7 +75,7 @@ public class SigninBean {
 			// 매 row를 불러옴
 			while(rs.next()) {
 				if(passwd.equals(rs.getString(1))) {
-					success = true;
+					id = rs.getInt(2);
 					break;
 				}
 			}
@@ -89,7 +89,7 @@ public class SigninBean {
 			System.out.println("SigninBean : " + e);
 		}
 
-		return success;
+		return id;
 		
 	}
   

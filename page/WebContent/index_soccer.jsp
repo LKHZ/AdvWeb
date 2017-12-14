@@ -32,7 +32,7 @@ pageEncoding="UTF-8"  %>
 
       <main role="main">
         <div class="row">
-      		<div class="col-lg-4 col-md-2">
+      		<div class="col-lg-4">
       			<div class="row mb-2">
       				<div class="container">
       				<jsp:include page="RTGame_soccer.jsp">
@@ -51,7 +51,7 @@ pageEncoding="UTF-8"  %>
       			</div>
       		</div>
       		
-      		<div class="col-lg-8 col-md-8">
+      		<div class="col-lg-8">
  	     		<table class="table table-sm table-striped">
  					<thead class="thead-dark">
    						<tr>

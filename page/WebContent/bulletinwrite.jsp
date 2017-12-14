@@ -29,31 +29,26 @@ pageEncoding="UTF-8"  %>
   </head>
   <body>
     <div class="container">
-      <jsp:include page="header.jsp">
-        <jsp:param name="callpage" value="index_baseball.jsp" />
-      </jsp:include> 
-
-     <div >
-        <form method="post" action="">
+        <form method="post" action="bulletinwrite_doit.jsp">
+        	<input type=hidden name=board value=<%= request.getAttribute("board") %>>
  	     	<table class="table">
   				<tbody>
   					<tr>
   						<td>카테고리 &nbsp;<select name="category">
   							<option value="sports">Sports</option>	
-  							<option value="chat">chat</option>
+  							<option value="chat" selected="selected">chat</option>
   						</select></td>
   					</tr>
     				<tr>
-    					<td><input type="text" class="form-control" placeholder="글 제목" maxlength="50"></td>
+    					<td><input type="text" class="form-control" name="title" placeholder="글 제목" maxlength="50"></td>
     				</tr>
     				<tr>
-    					<td><textarea class="form-control" placeholder="글 내용" maxlength="2048" style="height: 350px"></textarea></td>
+    					<td><textarea class="form-control" name="content" placeholder="글 내용" maxlength="2048" style="height: 350px"></textarea></td>
     				</tr>	
   				</tbody>
 			</table>
 	        <button type="submit" class="btn btn-sm btn-danger" style="float: right;">글쓰기</button>
       	</form>
-   	</div>
 	<div style="position: relative">
 	  <footer class="footer" style="margin-top: 60px;">
         <p>Copyright© Lee*2+Kang</p>

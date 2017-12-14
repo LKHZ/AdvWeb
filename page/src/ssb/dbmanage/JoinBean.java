@@ -217,7 +217,7 @@ public class JoinBean {
 				
 				
 				String sql = "insert into member(memberident, memberpasswd, membernickname, memberjoindate)"
-						 + "values(?, ?, ?, ?)";
+						+ "values(?, ?, ?, ?)";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, userid);
 				pstmt.setString(2, passwd);

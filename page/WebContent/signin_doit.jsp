@@ -26,7 +26,8 @@ pageEncoding="UTF-8" %>
     <%
       signin.setUserid(request.getParameter("userid"));
       signin.setPasswd(request.getParameter("passwd"));
-      if(!signin.checkUser()) {
+      int userseq;
+      if((userseq = signin.checkUser()) == 0) {
     %>
         <script>
           window.alert("로그인에 실패 하셨습니다.");
@@ -44,6 +45,7 @@ pageEncoding="UTF-8" %>
       session.setAttribute("logon", "true");
       session.setAttribute("userid", signin.getUserid());
       session.setAttribute("passwd", signin.getPasswd());
+      session.setAttribute("userseq", userseq);
     %>
       <script>
         window.alert("로그인에 성공 하셨습니다.");

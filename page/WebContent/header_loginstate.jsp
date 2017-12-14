@@ -27,6 +27,8 @@ pageEncoding="UTF-8"  %>
     /
     <%= session.getAttribute("passwd") %>
     /
+    <%= session.getAttribute("userseq") %>
+    /
     <button type="button" class="btn btn-danger" id="logoutbtn">Logout</button>
     <%
       }
