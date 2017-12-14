@@ -23,12 +23,16 @@ pageEncoding="UTF-8"  %>
         });
       });
     </script> --%>
+    <%
+    	session.setAttribute("board", "basketball");
+    	session.setAttribute("page", "1");
+    %>
   </head>
    <body>
     <div class="container">
       <jsp:include page="header.jsp">
         <jsp:param name="callpage" value="index_basketball.jsp" />
-      </jsp:include> 
+      </jsp:include>
 
       <main role="main">
         <div class="row">
@@ -52,7 +56,7 @@ pageEncoding="UTF-8"  %>
       		</div>
       		
       		<div class="col-lg-8">
-						<iframe width="100%" height="1000px" src="board.jsp?game=basketball&page=1" frameborder="0">
+						<iframe width="100%" height="1000px" src="board.jsp" frameborder="0">
  	     		
 						</iframe>
       		</div>

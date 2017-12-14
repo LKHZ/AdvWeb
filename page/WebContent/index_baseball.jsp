@@ -17,6 +17,10 @@ pageEncoding="UTF-8"  %>
     <link type="text/css" rel="stylesheet" href="cssjs/style.css">
     <script src = "jquery-3.2.1.js"></script>
 
+	<%
+    	session.setAttribute("board", "baseball");
+		session.setAttribute("page", "1");
+    %>
   </head>
    <body>
     <div class="container">
@@ -49,7 +53,7 @@ pageEncoding="UTF-8"  %>
       		</div>
       		
       		<div class="col-lg-8">
-						<iframe width="100%" height="1000px" src="board.jsp?game=baseball&page=1" frameborder="0">
+						<iframe width="100%" height="1000px" src="board.jsp" frameborder="0">
  	     		
 						</iframe>
       		</div>

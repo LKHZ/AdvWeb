@@ -17,13 +17,13 @@
     <link type="text/css" rel="stylesheet" href="cssjs/style.css">
     <script src = "jquery-3.2.1.js"></script>
     <script>
-    	var board = <%= request.getAttribute("game") %>;
+    	//var board = ;
         $(document).ready(function() {
             $('#bulletinwrite').on('click', function() {
             	<%
             		if(session.getAttribute("logon") == "true") {
             	%>
-		            	window.open("bulletinwrite.jsp?board="+board, "_self");
+		            	window.open("bulletinwrite.jsp", "_self");
 		        <%
             		}
             		else {
