@@ -17,13 +17,13 @@
     <link type="text/css" rel="stylesheet" href="cssjs/style.css">
     <script src = "jquery-3.2.1.js"></script>
     <script>
-    	//var board = ;
+    	var board = <%= request.getAttribute("game") %>;
         $(document).ready(function() {
             $('#bulletinwrite').on('click', function() {
             	<%
             		if(session.getAttribute("logon") == "true") {
             	%>
-		            	window.open("bulletinwrite.jsp", "_self");
+		            	window.open("bulletinwrite.jsp?board="+board, "_self");
 		        <%
             		}
             		else {
@@ -35,54 +35,95 @@
             });
         });
     </script>
+    <style>
+   		#bulletinno th{
+   			width: 10%;
+   		} 
+   		#bulletintitle th{
+   			width: 90%;	
+   		}
+		textarea{
+	  		border:1px solid #999999;
+	  		width:100%;
+	  		margin:5px 0;
+	  		padding:3px;
+		}
+		#writer_1{
+			padding-left: 20px;
+		}
+		#date_1{
+			text-aligh: right;
+			padding-right: 20px;
+		}
+		#writer_2{
+			width: 20%;
+			padding-left: 20px;
+		}
+		#date_2{
+			width: 10%;
+			font-size: 10px;
+		}
+    </style>
 </head>
 <body>
     <main role="main">
-	<table class="table table-sm table-striped">
+	<form method="post" action="#">
+	<table class="table table-sm">
  	<thead class="thead-dark">
   		<tr>
-    		<th scope="col" id="no">No</th>
-    		<th scope="col" id="cat">Cat</th>
-    		<th scope="col" id="sub" style="text-align: center;">Subject</th>
-        	<th scope="col" id="nam">Name</th>
-  			<th scope="col" id="dat">Date</th>
+    		<th scope="col" id="bulletinno">1123</th>
+    		<th colspan="2" scope="col"  id="bulletintitle">제목이다~~~~~~~~</th>
 		</tr>
     </thead>
     <tbody>
+    	<tr>
+    		<td colspan="2" id="writer_1">얄리얄리(닉네임)</td>
+    		<td>2017.12.14</td>
+    	</tr>
 		<tr>
-  			<th scope="row">1</th>
-  			<td>Sport</td>
-  			<td><a href="bulletin.jsp" target="_self">sub1111</a></td>
-  			<td>lee</td>
-  			<td>2017.12.07</td>
+  			<td colspan="3">
+<pre>
+글 내용입니다.
+살어리 살어리랏다 쳥산(靑山)애 살어리랏다
+
+멀위랑 다래랑 먹고 쳥산(靑山)애 살어리랏다
+얄리 얄리 얄랑셩 얄라리 얄라
+우러라 우러라 새여 자고 니러 우러라 새여
+널라와 시름 한 나도 자고 니러 우리노라
+얄리 얄리 얄라셩 얄라리 얄라
+가던 새 가던 새 본다 믈아래 가던 새 본다
+잉무든 장글란 가지고 믈아래 가던 새 본다
+얄리 얄리 얄라셩 얄라리 얄라
+</pre>
+  			</td>	
 		</tr>
+
+		<!-- 하나의 댓글 시작 -->
 		<tr>
-  			<th scope="row">2</th>
-  			<td>Sport</td>
-  			<td><a href="#">sub2222</a></td>
-  			<td>lee</td>
-  			<td>2017.12.07</td>
+			<td id="writer_2">얄리얄리(닉네임)</td>
+			<td> 정말 좋은 시조구만 허허(댓글내용)</td>
+			<td id="date_2">2017.12.14</td>
 		</tr>
+		<!-- 하나의 댓글 끝 -->
+
 		<tr>
-  			<th scope="row">3</th>
-  			<td>Sport</td>
-  			<td><a href="#">sub33333</a></td>
-  			<td>lee</td>
-  			<td>2017.12.07</td>
-		</tr>
-		<tr>
-  			<th scope="row">4</th>
-  			<td>Sport</td>
-  			<td><a href="#">sub33333</a></td>
-  			<td>lee</td>
-  			<td>2017.12.07</td>
+			<td colspan="2">
+				<textarea rows="5" ></textarea>
+			</td>
+			<td style="width: 20px;">
+        		<button id="submitreply" type="submit" class="btn btn-sm btn-danger btn-block" >댓글입력</button>
+			</td>
 		</tr>
     </tbody>
     </table>
 
+	</form>
+<%-- 
     <div>
 		<button type="button" class="btn btn-sm btn-danger " id="bulletinwrite" style="float: right;">글쓰기</button>
-	</div>
+	</div> 
+--%>
+
     </main> 
 					
     <!-- Bootstrap core JavaScript
