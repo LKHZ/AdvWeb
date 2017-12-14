@@ -48,6 +48,21 @@
 	  		margin:5px 0;
 	  		padding:3px;
 		}
+		#writer_1{
+			padding-left: 20px;
+		}
+		#date_1{
+			text-aligh: right;
+			padding-right: 20px;
+		}
+		#writer_2{
+			width: 20%;
+			padding-left: 20px;
+		}
+		#date_2{
+			width: 10%;
+			font-size: 10px;
+		}
     </style>
 </head>
 <body>
@@ -62,8 +77,8 @@
     </thead>
     <tbody>
     	<tr>
-    		<td colspan="2" style="padding-left: 20px;">얄리얄리(닉네임)</td>
-    		<td style="text-align: right; padding-right: 20px;">2017.12.14</td>
+    		<td colspan="2" id="writer_1">얄리얄리(닉네임)</td>
+    		<td>2017.12.14</td>
     	</tr>
 		<tr>
   			<td colspan="3">
@@ -85,9 +100,9 @@
 
 		<!-- 하나의 댓글 시작 -->
 		<tr>
-			<td style="width: 20%;">얄리얄리(닉네임)</td>
+			<td id="writer_2">얄리얄리(닉네임)</td>
 			<td> 정말 좋은 시조구만 허허(댓글내용)</td>
-			<td style=" width: 10%;font-size: 10px;">2017.12.14</td>
+			<td id="date_2">2017.12.14</td>
 		</tr>
 		<!-- 하나의 댓글 끝 -->
 
