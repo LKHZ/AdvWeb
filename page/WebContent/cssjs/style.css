@@ -9,10 +9,12 @@ body{
 #forTitle{
     margin-left: 30px;
 }
+
 #menuButton{
+	color: #868296;
     font-size: 20px;
-    margin-left:    30px;
-    margin-right:   30px;
+    margin-left: 30px;
+    margin-right: 30px;
 }
 #menuButton a{
 }

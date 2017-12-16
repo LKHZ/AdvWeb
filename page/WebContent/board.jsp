@@ -15,6 +15,7 @@
     <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="cssjs/navbar.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="cssjs/style.css">
+    <link type="text/css" rel="stylesheet" href="cssjs/board.css">
     <script src = "jquery-3.2.1.js"></script>
     <script>
     	//var board = ;

@@ -40,7 +40,7 @@ pageEncoding="UTF-8"  %>
           </button>
           <div class="collapse navbar-collapse" id="navbarsExample09">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item active" id="menuButton">
+              <li class="nav-item" id="menuButton">
                 <a class="nav-link" href="index_soccer.jsp" target="_self">축구<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item" id="menuButton">
