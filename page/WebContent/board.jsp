@@ -81,9 +81,10 @@
 	    </tbody>
 		</table>
 	    <hr>
+
 		<button type="button" class="btn btn-sm btn-danger " id="bulletinwrite" style="float: right;">글쓰기</button>
    		<nav aria-label="Page navigation example">
-  			<ul class="pagination">
+  			<ul class="pagination justify-content-center">
   				<!-- 왼쪽화살표 -->
     			<li class="page-item">
       				<a class="page-link" href="#" aria-label="Previous">
