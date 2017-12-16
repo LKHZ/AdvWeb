@@ -43,7 +43,6 @@
  		<thead class="thead-dark">
   			<tr>
     			<th scope="col" id="no">No</th>
-    			<th scope="col" id="cat">Cat</th>
     			<th scope="col" id="sub" style="text-align: center;">Subject</th>
         		<th scope="col" id="nam">Name</th>
   				<th scope="col" id="dat">Date</th>
@@ -51,29 +50,25 @@
     	</thead>
     	<tbody>
 			<tr>
-  				<th scope="row">1</th>
-  				<td>Sport</td>
+  				<th scope="row">4</th>
   				<td><a href="bulletin.jsp" target="_self">sub1111</a></td>
   				<td>lee</td>
 	  			<td>2017.12.07</td>
 			</tr>
 			<tr>
-  				<th scope="row">2</th>
-  				<td>Sport</td>
+  				<th scope="row">3</th>
   				<td><a href="#">sub2222</a></td>
   				<td>lee</td>
 	  			<td>2017.12.07</td>
 			</tr>
 			<tr>
-  				<th scope="row">3</th>
-  				<td>Sport</td>
+  				<th scope="row">2</th>
   				<td><a href="#">sub33333</a></td>
   				<td>lee</td>
 	  			<td>2017.12.07</td>
 			</tr>
 			<tr>
-  				<th scope="row">4</th>
-	  			<td>Sport</td>
+  				<th scope="row">1</th>
   				<td><a href="#">sub33333</a></td>
   				<td>lee</td>
   				<td>2017.12.07</td>
