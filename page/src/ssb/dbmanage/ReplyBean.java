@@ -11,44 +11,52 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-import ssb.content.BulletinDTO;
+import ssb.content.ReplyDTO;
 
-public class BoardBean {
-	private String title;
+public class ReplyBean {
 	private String content;
 	private int userSeq = 0;
 	private int boardNum = 0;
+	private int bulletinNum = 0;
 
 	private final String dbpasswd = "1313";
-	
-	
-	public int getUserSeq() {
-		return userSeq;
-	}
-	public void setUserSeq(int userSeq) {
-		this.userSeq = userSeq;
-	}
-	public int getBoardNum() {
-		return boardNum;
-	}
-	public void setBoardNum(int boardNum) {
-		this.boardNum = boardNum;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
+
+
 	public String getContent() {
 		return content;
 	}
+
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+	public int getUserSeq() {
+		return userSeq;
+	}
+
+	public void setUserSeq(int userSeq) {
+		this.userSeq = userSeq;
+	}
+
+	public int getBoardNum() {
+		return boardNum;
+	}
+
+	public void setBoardNum(int boardNum) {
+		this.boardNum = boardNum;
+	}
+
+	public int getBulletinNum() {
+		return bulletinNum;
+	}
+
+	public void setBulletinNum(int bulletinNum) {
+		this.bulletinNum = bulletinNum;
+	}
 	
-	public ArrayList<BulletinDTO> bulletinList(int boardNum) {
-		ArrayList<BulletinDTO> bulletins = new ArrayList<BulletinDTO>();
+	public ArrayList<ReplyDTO> replyList(int bulletinNum) {
+		ArrayList<ReplyDTO> replys = new ArrayList<ReplyDTO>();
+		
 		// 데이터베이스 연결 관련 변수 선언
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -69,25 +77,23 @@ public class BoardBean {
 
 			// Connection 클래스의 인스턴스로부터 SQL문 작성을 위한 Statement 준비
 
-			String sql = "select b.bulletinid, b.bulletincreatedate, b.bulletintitle"
-					+ ", b.bulletincontent, m.memberident from bulletin b, member m"
-					+ " where b.bulletinvalid = 1 and m.memberid = b.memberid and b.boardid = ? order by b.bulletinid desc";
+			String sql = "select c.commentcreatedate, c.commentcontent, m.memberident"
+					+ " from comment c, member m where c.commentvalid = 1"
+					+ " and c.memberid = m.memberid and c.bulletinid = ? order by c.commentid desc";
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, boardNum);
+			pstmt.setInt(1, bulletinNum);
 
 			ResultSet rs = pstmt.executeQuery();
 			
 
 			while(rs.next()) {
-				BulletinDTO bulletin = new BulletinDTO();
-				bulletin.setId(rs.getInt(1));
-				bulletin.setDate(sdf.format(new Date(rs.getTimestamp(2).getTime())));
-				bulletin.setTitle(rs.getString(3));
-				bulletin.setContent(rs.getString(4));
-				bulletin.setUserid(rs.getString(5));
+				ReplyDTO reply = new ReplyDTO();
+				reply.setDate(sdf.format(new Date(rs.getTimestamp(1).getTime())));
+				reply.setContent(rs.getString(2));
+				reply.setUserid(rs.getString(3));
 				
-				bulletins.add(bulletin);
+				replys.add(reply);
 			}
 
 			rs.close();
@@ -97,16 +103,13 @@ public class BoardBean {
 		} catch (Exception e) {
 			System.out.println("BoardBean : " + e);
 		}
-		return bulletins;
+		return replys;
 	}
 	
-	public int bulletinCreate() {
+	public int replyCreate() {
 		int create = 0;
 		
-		if(title == null) {
-			create = -1;
-		}
-		else if(content == null) {
+		if(content == null) {
 			create = -2;
 		}
 		else if(boardNum == 0) {
@@ -114,6 +117,9 @@ public class BoardBean {
 		}
 		else if(userSeq == 0) {
 			create = -5;
+		}
+		else if(bulletinNum == 0) {
+			create = -6;
 		}
 		else {
 			// 데이터베이스 연결 관련 변수 선언
@@ -134,10 +140,10 @@ public class BoardBean {
 			} catch (ParseException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
-				System.out.println("BoardBean : " + e1);
+				System.out.println("ReplyBean : " + e1);
 			}
 			if (date == null) {
-				System.out.println("BoardBean : date == null");
+				System.out.println("ReplyBean : date == null");
 				return create;
 			}
 			Timestamp timestamp = new Timestamp(date.getTime());
@@ -151,16 +157,16 @@ public class BoardBean {
 
 				// Connection 클래스의 인스턴스로부터 SQL문 작성을 위한 Statement 준비
 				
-				String sql = "insert into bulletin(bulletintitle, bulletincontent, bulletinvalid"
-						+ ", bulletincreatedate, memberid, boardid)"
+				String sql = "insert into comment(commentcontent, commentvalid"
+						+ ", commentcreatedate, memberid, boardid, bulletinid)"
 						 + "values(?, ?, ?, ?, ?, ?)";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, title);
-				pstmt.setString(2, content);
-				pstmt.setInt(3, 1);
-				pstmt.setTimestamp(4, timestamp);
-				pstmt.setInt(5, userSeq);
-				pstmt.setInt(6, boardNum);
+				pstmt.setString(1, content);
+				pstmt.setInt(2, 1);
+				pstmt.setTimestamp(3, timestamp);
+				pstmt.setInt(4, userSeq);
+				pstmt.setInt(5, boardNum);
+				pstmt.setInt(6, bulletinNum);
 
 				pstmt.executeUpdate();
 
@@ -170,12 +176,12 @@ public class BoardBean {
 				conn.close();
 
 			} catch (Exception e) {
-				System.out.println("BoardBean : " + e);
+				System.out.println("ReplyBean : " + e);
 			}
 
 		}
 		
 		return create;
 	}
-	
+
 }

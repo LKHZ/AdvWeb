@@ -44,14 +44,21 @@
             });
         });
     </script>
+    <style>
+    	.page-item-custom{
+    		width:43px;
+    	}
+    </style>
 	<%
 		String boardName = (String)session.getAttribute("board");
 		int pageNum = Integer.parseInt(request.getParameter("page"));
+		
+		session.setAttribute("page", pageNum);
 		if(!(pageNum > 1)) {
 			pageNum = 1;
 		}
-		int boardNum;
 		
+		int boardNum;
 		if(boardName.equals("baseball")) {
 			boardNum = 1;
 		}
@@ -108,11 +115,11 @@
 </head>
 <body>
     <main role="main">
-		<table class="table table-sm table-striped">
+		<table class="table table-sm table-striped table-hover">
  		<thead class="thead-dark">
   			<tr>
-    			<th scope="col" width="5%">No</th>
-    			<th scope="col" width="55%" style="text-align: center;">Subject</th>
+    			<th scope="col" width="8%">No</th>
+    			<th scope="col" width="52%" style="text-align: center;">Subject</th>
         		<th scope="col" width="20%">Name</th>
   				<th scope="col" width="20%">Date</th>
 			</tr>
@@ -120,7 +127,7 @@
     	<tbody>
 			<%
 				int pageUnit = (pageNum-1)*10;
-				for(int i=0+pageUnit; i<(bulletins.size()<10?bulletins.size():10)+pageUnit; i++) {
+				for(int i=0+pageUnit; i<(bulletins.size()-pageUnit<10?bulletins.size()-pageUnit:10)+pageUnit; i++) {
 			%>
 				<tr>
 					<th scope="row"><%= bulletins.get(i).getId() %></th>
@@ -139,7 +146,7 @@
    		<nav aria-label="Page navigation example">
   			<ul class="pagination justify-content-center">
   				<!-- 왼쪽화살표 -->
-    			<li class="page-item">
+    			<li class="page-item page-item-custom">
       				<a class="page-link" href="board.jsp?page=1" target="_self" aria-label="Lirst">
         				<span aria-hidden="true">&laquo;</span>
         				<span class="sr-only">First</span>
@@ -150,28 +157,28 @@
 					int pageSize = bulletins.size()/10+1;
 					int startPage;
 					int endPage;
-					if(pageNum < 4) {
+					if(pageNum < 6) {
 						startPage = 1;
-						endPage = (pageSize < 5 ? pageSize : 5);
+						endPage = (pageSize < 9 ? pageSize : 9);
 					}
-					else if(pageNum > pageSize - 3) {
-						startPage = pageSize - 4;
+					else if(pageNum > pageSize - 5) {
+						startPage = pageSize - 8;
 						endPage = pageSize;
 					}
 					else {
-						startPage = pageNum - 2;
-						endPage = pageNum + 2;
+						startPage = pageNum - 4;
+						endPage = pageNum + 4;
 					}
 					for(int j=startPage; j<=endPage; j++) {
 				%>
-    			<li class="page-item"><a class="page-link" href="board.jsp?page=<%= j %>" target="_self"><%= j %></a></li>
+    			<li class="page-item page-item-custom"><a class="page-link" href="board.jsp?page=<%= j %>" target="_self"><%= j %></a></li>
 					
     			<% } %>
     			<!--<li class="page-item"><a href="#">1</a></li>
     			<li class="page-item"><a href="#">2</a></li>
     			<li class="page-item"><a href="#">3</a></li> -->
 					<!-- 오른쪽화살표 -->
-    			<li class="page-item">
+    			<li class="page-item page-item-custom">
       				<a class="page-link" href="board.jsp?page=<%= pageSize %>" target="_self" aria-label="Last">
         				<span aria-hidden="true">&raquo;</span>
         				<span class="sr-only">Last</span>

@@ -29,7 +29,7 @@
     </script>
 
     <script>
-        $(document).ready(function() {
+        <%-- $(document).ready(function() {
             $('#bulletinwrite').on('click', function() {
             	<%
             		if(session.getAttribute("logon") == "true") {
@@ -44,7 +44,7 @@
             		}
             	%>
             });
-        });
+        }); --%>
         $(document).ready(function() {
         	<%
         		int i = Integer.parseInt(request.getParameter("read"));
@@ -54,8 +54,15 @@
         		
         		BulletinDTO bulletin = bulletins.get(i);
         		
-        		session.setAttribute("read", new ArrayList<BulletinDTO>());
+        		//session.setAttribute("read", new ArrayList<BulletinDTO>());
         	%>
+        });
+        
+        
+        $(document).ready(function() {
+        	$('#listbtn').on('click', function() {
+        		document.location.href="board.jsp?page=" + (String)(<%= session.getAttribute("page") %>);
+        	});
         });
     </script>
     
@@ -87,6 +94,13 @@
 			width: 10%;
 			font-size: 10px;
 		}
+		pre {
+			white-space: normal;
+			word-break: keep-all;
+			word-spacing: 5px;
+			word-wrap: break-word;
+			
+		}
     </style>
 </head>
 <body>
@@ -104,20 +118,79 @@
     		<td><%= bulletin.getDate() %></td>
     	</tr>
 		<tr>
-  			<td colspan="3">
-<pre>
-<%= bulletin.getContent() %>
-</pre>
-  			</td>	
+  			<td colspan="3" >
+				<pre>
+					<%= bulletin.getContent() %>
+				</pre>
+
+  			</td>
 		</tr>
+		
     </tbody>
     </table>
-	<iframe width="100%" onload="resizeIframe(this)" src="reply.jsp" frameborder="0">
+
+	<%-- <main role="main">
+		<form action="replywrite_doit.jsp" method="POST">
+        <!-- 4*3 col-->
+        <input type=hidden name=board value=<%= session.getAttribute("board") %>>
+        <div class="row">
+          <div class="col-lg-11 col-md-11 col-sm-10 col-xs-12">
+            <textarea id="replycontent" name="replycontent" rows="5" ></textarea>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-2 col-xs-3">
+            <button id="submitreply" type="submit" class="btn btn-sm btn-danger btn-block" >댓글입력</button>
+          </div>
+        </div>
+        </form>
+    </main> --%>
+    
+    <main role="main">
+        <form method="post" action="replywrite_doit.jsp">
+        	<input type=hidden name=board value=<%= session.getAttribute("board") %>>
+        	<input type=hidden name=bulletin value=<%= bulletin.getId() %>>
+        	<input type=hidden name=read value=<%= i %>>
+        	<table class="table table-sm">
+  				<tbody>
+  					<%
+            			if(session.getAttribute("logon") == "true") {
+            		%>
+		         		   	<tr>
+								<td colspan="2">
+									<textarea id="replycontent" name="replycontent" rows="5" ></textarea>
+								</td>
+								<td style="width: 20px;">
+		        					<button id="submitreply" type="submit" class="btn btn-sm btn-danger btn-block" >댓글입력</button>
+								</td>
+							</tr>
+		        	<%
+            			}
+            			else {
+            		%>
+            				<tr>
+								<td colspan="2">
+									<textarea id="replycontent" disabled="disabled" name="replycontent" rows="5" >댓글을 입력하시려면 로그인을 해주세요.</textarea>
+								</td>
+								<td style="width: 20px;">
+		        					<button id="submitreply" disabled="disabled" type="submit" class="btn btn-sm btn-danger btn-block" >댓글입력</button>
+								</td>
+							</tr>
+            		<%
+            			}
+            		%>
+  					
+   					
+				</tbody>
+			</table>
+		</form>
+	</main>
+      
+		
+	<iframe width="100%" onload="resizeIframe(this)" src="reply.jsp?bulletin=<%= bulletin.getId() %>" frameborder="0">
 	</iframe>
-	<form method="post">
-	  <button type="submit" class="btn btn-sm btn-danger" style="float: left; margin-left: 10px;">목록</button>
-	  <button type="submit" class="btn btn-sm btn-danger" style="float: left; margin-left: 10px;">삭제</button>
-	</form>
+	
+	<button type="button" id="listbtn" class="btn btn-sm btn-danger" style="float: left; margin-left: 10px;">목록</button>
+	<%-- <button type="button" id="dropbtn" class="btn btn-sm btn-danger" style="float: left; margin-left: 10px;">삭제</button> --%>
+	
 <%-- 
     <div>
 		<button type="button" class="btn btn-sm btn-danger " id="bulletinwrite" style="float: right;">글쓰기</button>

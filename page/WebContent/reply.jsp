@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ page import="ssb.content.ReplyDTO" %>
+<%@ page import="java.util.ArrayList" %>
+
+<jsp:useBean id="reply" class="ssb.dbmanage.ReplyBean" scope="page" />
+<jsp:setProperty name="reply" property="*" />
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -60,32 +68,34 @@
 			padding-left: 20px;
 		}
 		#date_2{
-			width: 10%;
+			width: 15%;
 			font-size: 10px;
 		}
     </style>
+    
+    <%
+    	int bulletinNum = Integer.parseInt(request.getParameter("bulletin"));
+    	
+    	ArrayList<ReplyDTO> replys;
+    	
+    	replys = reply.replyList(bulletinNum);
+    	
+    %>
 </head>
 <body>
     <main role="main">
 	<form method="post" action="#">
 	<table class="table table-sm">
     <tbody>
-		<!-- 하나의 댓글 시작 -->
-		<tr>
-			<td id="writer_2">얄리얄리(닉네임)</td>
-			<td> 정말 좋은 시조구만 허허(댓글내용)</td>
-			<td id="date_2">2017.12.14</td>
-		</tr>
-		<!-- 하나의 댓글 끝 -->
-
-		<tr>
-			<td colspan="2">
-				<textarea rows="5" ></textarea>
-			</td>
-			<td style="width: 20px;">
-        		<button id="submitreply" type="submit" class="btn btn-sm btn-danger btn-block" >댓글입력</button>
-			</td>
-		</tr>
+    	<%
+    		for(int i=0; i<replys.size(); i++) {
+    	%>
+    			<tr>
+					<td id="writer_2"><%= replys.get(i).getUserid() %></td>
+					<td><%= replys.get(i).getContent() %></td>
+					<td id="date_2"><%= replys.get(i).getDate() %></td>
+				</tr>
+    	<% } %>
     </tbody>
     </table>
 	</form>
