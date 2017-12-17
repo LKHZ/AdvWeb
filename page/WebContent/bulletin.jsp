@@ -79,19 +79,20 @@
 	<table class="table table-sm">
  	<thead class="thead-dark">
   		<tr>
-    		<th scope="col" id="bulletinno">1123</th>
-    		<th colspan="2" scope="col"  id="bulletintitle">제목이다~~~~~~~~</th>
+    		<th scope="col" id="bulletinno">4</th>
+    		<th colspan="2" scope="col"  id="bulletintitle">sub1111</th>
 		</tr>
     </thead>
     <tbody>
     	<tr>
-    		<td colspan="2" id="writer_1">얄리얄리(닉네임)</td>
-    		<td>2017.12.14</td>
+    		<td colspan="2" id="writer_1">lee</td>
+    		<td>2017.12.07 17:54</td>
     	</tr>
 		<tr>
   			<td colspan="3">
 <pre>
 글 내용입니다.
+
 살어리 살어리랏다 쳥산(靑山)애 살어리랏다
 
 멀위랑 다래랑 먹고 쳥산(靑山)애 살어리랏다
@@ -109,6 +110,10 @@
     </table>
 	<iframe width="100%" onload="resizeIframe(this)" src="reply.jsp" frameborder="0">
 	</iframe>
+	<form method="post">
+	  <button type="submit" class="btn btn-sm btn-danger" style="float: left; margin-left: 10px;">목록</button>
+	  <button type="submit" class="btn btn-sm btn-danger" style="float: left; margin-left: 10px;">삭제</button>
+	</form>
 <%-- 
     <div>
 		<button type="button" class="btn btn-sm btn-danger " id="bulletinwrite" style="float: right;">글쓰기</button>
