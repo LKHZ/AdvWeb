@@ -25,7 +25,7 @@ pageEncoding="UTF-8"  %>
     </script> --%>
     <%
     	session.setAttribute("board", "soccer");
-		session.setAttribute("page", "1");
+		session.setAttribute("page", 1);
     %>
   </head>
    <body>

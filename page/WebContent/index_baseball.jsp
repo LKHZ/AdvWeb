@@ -19,7 +19,7 @@ pageEncoding="UTF-8"  %>
 
 	<%
     	session.setAttribute("board", "baseball");
-		session.setAttribute("page", "1");
+		session.setAttribute("page", 1);
     %>
   </head>
    <body>

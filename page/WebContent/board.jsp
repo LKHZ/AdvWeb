@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
+
+<%@ page import="ssb.content.BulletinDTO" %>
+<%@ page import="java.util.ArrayList" %>
+
+<jsp:useBean id="board" class="ssb.dbmanage.BoardBean" scope="page" />
+<jsp:setProperty name="board" property="*" />
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -36,6 +44,35 @@
             });
         });
     </script>
+	<%
+		String boardName = (String)session.getAttribute("board");
+		int pageNum = (int)session.getAttribute("page");
+		int boardNum;
+		
+		if(boardName.equals("baseball")) {
+			boardNum = 1;
+		}
+		else if(boardName.equals("basketball")) {
+			boardNum = 2;
+		}
+		else if(boardName.equals("soccer")) {
+			boardNum = 3;
+		}
+		else {
+			boardNum = 0;
+			%>
+				<script>
+					window.alert("게시판이 선택되지 않았습니다." + <%= boardName %> + "   " + <%= boardNum %>);
+					window.open("board.jsp", "_self");
+				</script>
+			<%
+			return;
+		}
+		
+		ArrayList<BulletinDTO> bulletins;
+
+		bulletins = board.bulletinList(boardNum);
+	%>
 </head>
 <body>
     <main role="main">
@@ -49,6 +86,18 @@
 			</tr>
     	</thead>
     	<tbody>
+			<%
+				for(int i=0+(pageNum-1)*20; i<(bulletins.size()<20?bulletins.size():20)+(pageNum-1)*20; i++) {
+			%>
+				<script> var vv = <%= i %>; alert(i); </script>
+				<tr>
+					<th scope="row"><%= bulletins.get(i).getId() %></th>
+					<td><a href="bulletin.jsp" target="_serlf"><%= bulletins.get(i).getTitle() %></a></td>
+					<td><%= bulletins.get(i).getUserid() %></td>
+					<td><%= bulletins.get(i).getDate() %></td>
+				</tr>
+			<% } %>
+
 			<tr>
   				<th scope="row">4</th>
   				<td><a href="bulletin.jsp" target="_self">sub1111</a></td>

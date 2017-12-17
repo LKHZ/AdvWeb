@@ -5,7 +5,9 @@ public class SigninBean {
 
 	private String userid;
 	private String passwd;
-			
+
+	private final String dbpasswd = "1313";
+	
 //	final String _userid = "root";
 //	final String _passwd = "1234";
 
@@ -56,7 +58,7 @@ public class SigninBean {
 			Class.forName(jdbc_driver);
 			
 			// 데이터베이스 연결정보를 이용해 Connection 인스턴스 확보
-			conn = DriverManager.getConnection(jdbc_url, "root", "1313");
+			conn = DriverManager.getConnection(jdbc_url, "root", dbpasswd);
 			
 			// Connection 클래스의 인스턴스로부터 SQL문 작성을 위한 Statement 준비
 			String sql = "select memberpasswd, memberid from member where memberident = ?";
