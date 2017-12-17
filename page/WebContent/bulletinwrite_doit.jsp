@@ -67,7 +67,7 @@
 			<%= boardName %>
 			<%= boardNum %>
 			<script>
-				window.alert("새 글 생성에 실해하였습니다.");
+				window.alert("새 글 생성에 실패하였습니다.");
 				document.location.href="board.jsp?page=1";
 			</script>
 		<%

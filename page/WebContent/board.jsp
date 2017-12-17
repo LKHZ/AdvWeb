@@ -170,10 +170,18 @@
 						endPage = pageNum + 4;
 					}
 					for(int j=startPage; j<=endPage; j++) {
+						if ( j == pageNum ) {
+							%>
+								<li class="page-item page-item-custom active"><a class="page-link" href="board.jsp?page=<%= j %>" target="_self"><%= j %></a></li>
+							<%
+						}
+						else {
+							%>
+    							<li class="page-item page-item-custom"><a class="page-link" href="board.jsp?page=<%= j %>" target="_self"><%= j %></a></li>
+							<% 
+ 		   				} 
+					}
 				%>
-    			<li class="page-item page-item-custom"><a class="page-link" href="board.jsp?page=<%= j %>" target="_self"><%= j %></a></li>
-					
-    			<% } %>
     			<!--<li class="page-item"><a href="#">1</a></li>
     			<li class="page-item"><a href="#">2</a></li>
     			<li class="page-item"><a href="#">3</a></li> -->

@@ -64,6 +64,24 @@
         		document.location.href="board.jsp?page=" + (String)(<%= session.getAttribute("page") %>);
         	});
         });
+        
+        $(document).ready(function() {
+        	$('#dropbtn').on('click', function() {
+        		<%
+	        		if(session.getAttribute("logon") == "true" && session.getAttribute("userid").toString().equals(bulletin.getUserid())) {
+	        	%>
+	        			document.location.href="bulletindrop_doit.jsp?bulletin=" + (String)(<%= bulletin.getId() %>);
+		        <%
+	        		}
+	        		else {
+	        	%>
+	        			window.alert("본 계정의 게시물이 아닙니다.");
+	        	<%
+	        		}
+	        	%>
+        	});
+        });
+        
     </script>
     
     <style>
@@ -189,13 +207,8 @@
 	</iframe>
 	
 	<button type="button" id="listbtn" class="btn btn-sm btn-danger" style="float: left; margin-left: 10px;">목록</button>
-	<%-- <button type="button" id="dropbtn" class="btn btn-sm btn-danger" style="float: left; margin-left: 10px;">삭제</button> --%>
+	<button type="button" id="dropbtn" class="btn btn-sm btn-danger" style="float: left; margin-left: 10px;">삭제</button>
 	
-<%-- 
-    <div>
-		<button type="button" class="btn btn-sm btn-danger " id="bulletinwrite" style="float: right;">글쓰기</button>
-	</div> 
---%>
 
     </main> 
 					
