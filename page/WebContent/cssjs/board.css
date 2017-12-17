@@ -4,14 +4,9 @@ td a:link{ color: black;	}
 td a:hover{ color: black;	}
 td a:active{ color: black;	}
 
-#ran{ width: 8%; 	}
-#team{ width: 45%;	}
-#win{ width: 8%; 	}
-#lose{ width: 8%;	}
-#draw{ width: 17%;	}
-#pervic{ width: 14%;}
-
-#no{ width: 7%; }	
-#sub{width: 63%; }
-#nam{width: 20%;	}
-#dat{width: 10%; }
+#ran{ 		width: 8%; 	}
+#team{ 		width: 45%;	}
+#win{ 		width: 8%; 	}
+#lose{ 		width: 8%;	}
+#draw{ 		width: 17%;	}
+#pervic{ 	width: 14%; }

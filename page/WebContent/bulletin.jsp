@@ -114,6 +114,10 @@
     </table>
 	<iframe width="100%" onload="resizeIframe(this)" src="reply.jsp" frameborder="0">
 	</iframe>
+	<form method="post">
+	  <button type="submit" class="btn btn-sm btn-danger" style="float: left; margin-left: 10px;">목록</button>
+	  <button type="submit" class="btn btn-sm btn-danger" style="float: left; margin-left: 10px;">삭제</button>
+	</form>
 <%-- 
     <div>
 		<button type="button" class="btn btn-sm btn-danger " id="bulletinwrite" style="float: right;">글쓰기</button>

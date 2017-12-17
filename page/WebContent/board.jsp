@@ -111,10 +111,10 @@
 		<table class="table table-sm table-striped">
  		<thead class="thead-dark">
   			<tr>
-    			<th scope="col" id="no">No</th>
-    			<th scope="col" id="sub" style="text-align: center;">Subject</th>
-        		<th scope="col" id="nam">Name</th>
-  				<th scope="col" id="dat">Date</th>
+    			<th scope="col" width="5%">No</th>
+    			<th scope="col" width="55%" style="text-align: center;">Subject</th>
+        		<th scope="col" width="20%">Name</th>
+  				<th scope="col" width="20%">Date</th>
 			</tr>
     	</thead>
     	<tbody>
