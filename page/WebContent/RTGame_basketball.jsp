@@ -20,9 +20,8 @@
           <ol class="carousel-indicators">
           <%
           	RTGBSDAO rtgb = new RTGBSDAO();
-          	List<RTGBSDTO> list = null;
-   			list = new ArrayList<RTGBSDTO>();
-          	List<RTGBSDTO> lrtgb = rtgb.getList();
+          	List<RTGBSDTO> lrtgb = new ArrayList<RTGBSDTO>();
+          	lrtgb = rtgb.getList();
           %>
           	<% for(int i=0; i<lrtgb.size(); i++){
           		if(i==0){ %>

@@ -123,6 +123,10 @@ public class TSVBean {
 		this.leaguenum = a;
 	}
 	
+	public int getleagueNum() {
+		return this.leaguenum;
+	}
+	
 	public int getTeamNum(int a) {
 		return this.league[this.leaguenum].teamda[a].teamnum;
 	}

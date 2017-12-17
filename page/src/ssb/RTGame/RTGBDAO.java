@@ -33,7 +33,7 @@ public class RTGBDAO {
  					rs = ps.executeQuery();
  					while(rs.next()) {
  							int chk=0;
- 							String ssql = "select count(*) from game as g join `participated team` as p on p.gameid=g.gameid where g.gamestatus = '진행' and g.leagueid="+rs.getInt(1)+";";
+ 							String ssql = "select count(*) from game as g join `participated team` as p on p.gameid=g.gameid where g.gamestatus = '종료' and g.leagueid="+rs.getInt(1)+";";
  	 						pss = con.prepareStatement(ssql);
  	 						rss = pss.executeQuery();
  	 						while(rss.next()) {
@@ -41,7 +41,7 @@ public class RTGBDAO {
  	 							chk += rss.getInt(1);
  	 						}
  	 						if(chk!=0) {
- 	 							ssql = "select p.hometeamid,p.awayteamid, g.gamestatusdetail from game as g join `participated team` as p on p.gameid=g.gameid where g.gamestatus = '진행' and g.leagueid="+rs.getInt(1)+";";
+ 	 							ssql = "select p.hometeamid,p.awayteamid, g.gamestatusdetail from game as g join `participated team` as p on p.gameid=g.gameid where g.gamestatus = '종료' and g.leagueid="+rs.getInt(1)+";";
  	 	 						pss = con.prepareStatement(ssql);
  	 	 						rss = pss.executeQuery();
  	 	 						while(rss.next()) {

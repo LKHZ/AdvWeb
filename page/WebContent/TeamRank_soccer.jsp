@@ -75,7 +75,7 @@
           		else{
           		%>
           			 <div class = "carousel-item">
-				</td><td><% TSV.setleagueNum(j); %>
+				<% TSV.setleagueNum(j); %>
 				&nbsp;<%=TSV.getLeagueName() %>
 				<table class="table table-sm">
 					<thead>

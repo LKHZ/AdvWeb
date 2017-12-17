@@ -45,7 +45,7 @@
 				
 				<td><% TSV.setleagueNum(j); %></td>
 				&nbsp;<%=TSV.getLeagueName() %>
-				<table id="example" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
+				<table class="table table-sm">
 					<thead>
 						<tr id = "target">
 							<th scope="col" id="ran"></th>
@@ -82,7 +82,7 @@
           			 <div class = "carousel-item">
 				<% TSV.setleagueNum(j); %>
 				&nbsp;<%=TSV.getLeagueName() %>
-				<table id="example1" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
+				<table class="table table-sm">
 					<thead>
 						<tr>
 							<th scope="col" id="ran"></th>
