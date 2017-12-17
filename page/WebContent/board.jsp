@@ -15,6 +15,7 @@
     <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="cssjs/navbar.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="cssjs/style.css">
+    <link type="text/css" rel="stylesheet" href="cssjs/board.css">
     <script src = "jquery-3.2.1.js"></script>
     <script>
     	//var board = ;
@@ -38,51 +39,67 @@
 </head>
 <body>
     <main role="main">
-	<table class="table table-sm table-striped">
- 	<thead class="thead-dark">
-  		<tr>
-    		<th scope="col" id="no">No</th>
-    		<th scope="col" id="cat">Cat</th>
-    		<th scope="col" id="sub" style="text-align: center;">Subject</th>
-        	<th scope="col" id="nam">Name</th>
-  			<th scope="col" id="dat">Date</th>
-		</tr>
-    </thead>
-    <tbody>
-		<tr>
-  			<th scope="row">1</th>
-  			<td>Sport</td>
-  			<td><a href="bulletin.jsp" target="_self">sub1111</a></td>
-  			<td>lee</td>
-  			<td>2017.12.07</td>
-		</tr>
-		<tr>
-  			<th scope="row">2</th>
-  			<td>Sport</td>
-  			<td><a href="#">sub2222</a></td>
-  			<td>lee</td>
-  			<td>2017.12.07</td>
-		</tr>
-		<tr>
-  			<th scope="row">3</th>
-  			<td>Sport</td>
-  			<td><a href="#">sub33333</a></td>
-  			<td>lee</td>
-  			<td>2017.12.07</td>
-		</tr>
-		<tr>
-  			<th scope="row">4</th>
-  			<td>Sport</td>
-  			<td><a href="#">sub33333</a></td>
-  			<td>lee</td>
-  			<td>2017.12.07</td>
-		</tr>
-    </tbody>
-    </table>
+		<table class="table table-sm table-striped">
+ 		<thead class="thead-dark">
+  			<tr>
+    			<th scope="col" id="no">No</th>
+    			<th scope="col" id="sub" style="text-align: center;">Subject</th>
+        		<th scope="col" id="nam">Name</th>
+  				<th scope="col" id="dat">Date</th>
+			</tr>
+    	</thead>
+    	<tbody>
+			<tr>
+  				<th scope="row">4</th>
+  				<td><a href="bulletin.jsp" target="_self">sub1111</a></td>
+  				<td>lee</td>
+	  			<td>2017.12.07</td>
+			</tr>
+			<tr>
+  				<th scope="row">3</th>
+  				<td><a href="#">sub2222</a></td>
+  				<td>lee</td>
+	  			<td>2017.12.07</td>
+			</tr>
+			<tr>
+  				<th scope="row">2</th>
+  				<td><a href="#">sub33333</a></td>
+  				<td>lee</td>
+	  			<td>2017.12.07</td>
+			</tr>
+			<tr>
+  				<th scope="row">1</th>
+  				<td><a href="#">sub33333</a></td>
+  				<td>lee</td>
+  				<td>2017.12.07</td>
+			</tr>
+	    </tbody>
+		</table>
+	    <hr>
 
-    <div>
 		<button type="button" class="btn btn-sm btn-danger " id="bulletinwrite" style="float: right;">글쓰기</button>
-	</div>
+   		<nav aria-label="Page navigation example">
+  			<ul class="pagination justify-content-center">
+  				<!-- 왼쪽화살표 -->
+    			<li class="page-item">
+      				<a class="page-link" href="#" aria-label="Previous">
+        				<span aria-hidden="true">&laquo;</span>
+        				<span class="sr-only">Previous</span>
+      				</a>
+    			</li>
+    			<!-- pagination -->
+    			<li class="page-item"><a class="page-link" href="#">1</a></li>
+    			<li class="page-item"><a class="page-link" href="#">2</a></li>
+    			<li class="page-item"><a class="page-link" href="#">3</a></li>
+    			<!-- 오른쪽화살표 -->
+    			<li class="page-item">
+      				<a class="page-link" href="#" aria-label="Next">
+        				<span aria-hidden="true">&raquo;</span>
+        				<span class="sr-only">Next</span>
+      				</a>
+    			</li>
+  			</ul>
+		</nav>
     </main> 
 					
     <!-- Bootstrap core JavaScript

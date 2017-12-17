@@ -24,6 +24,10 @@ pageEncoding="UTF-8"  %>
         });
       });
     </script> --%>
+  
+  <%
+  	session.setAttribute("board", "index");
+  %>
   </head>
   <body>
   <%@ page import="org.json.simple.JSONArray"%>

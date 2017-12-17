@@ -16,22 +16,14 @@
     <link href="cssjs/navbar.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="cssjs/style.css">
     <script src = "jquery-3.2.1.js"></script>
-
-    <!-- iframe 높이 가변적으로 변경 -->
     <script>
-		function resizeIframe(i){
-			var iframeHeight = (i).contentWindow.document.body.scrollHeight;
-			(i).height = iframeHeight+20;
-		}
-    </script>
-
-    <script>
+    	var board = <%= request.getAttribute("game") %>;
         $(document).ready(function() {
             $('#bulletinwrite').on('click', function() {
             	<%
             		if(session.getAttribute("logon") == "true") {
             	%>
-		            	window.open("bulletinwrite.jsp", "_self");
+		            	window.open("bulletinwrite.jsp?board="+board, "_self");
 		        <%
             		}
             		else {
@@ -43,7 +35,6 @@
             });
         });
     </script>
-    
     <style>
    		#bulletinno th{
    			width: 10%;
@@ -76,39 +67,28 @@
 </head>
 <body>
     <main role="main">
+	<form method="post" action="#">
 	<table class="table table-sm">
- 	<thead class="thead-dark">
-  		<tr>
-    		<th scope="col" id="bulletinno">1123</th>
-    		<th colspan="2" scope="col"  id="bulletintitle">제목이다~~~~~~~~</th>
-		</tr>
-    </thead>
     <tbody>
-    	<tr>
-    		<td colspan="2" id="writer_1">얄리얄리(닉네임)</td>
-    		<td>2017.12.14</td>
-    	</tr>
+		<!-- 하나의 댓글 시작 -->
 		<tr>
-  			<td colspan="3">
-<pre>
-글 내용입니다.
-살어리 살어리랏다 쳥산(靑山)애 살어리랏다
+			<td id="writer_2">얄리얄리(닉네임)</td>
+			<td> 정말 좋은 시조구만 허허(댓글내용)</td>
+			<td id="date_2">2017.12.14</td>
+		</tr>
+		<!-- 하나의 댓글 끝 -->
 
-멀위랑 다래랑 먹고 쳥산(靑山)애 살어리랏다
-얄리 얄리 얄랑셩 얄라리 얄라
-우러라 우러라 새여 자고 니러 우러라 새여
-널라와 시름 한 나도 자고 니러 우리노라
-얄리 얄리 얄라셩 얄라리 얄라
-가던 새 가던 새 본다 믈아래 가던 새 본다
-잉무든 장글란 가지고 믈아래 가던 새 본다
-얄리 얄리 얄라셩 얄라리 얄라
-</pre>
-  			</td>	
+		<tr>
+			<td colspan="2">
+				<textarea rows="5" ></textarea>
+			</td>
+			<td style="width: 20px;">
+        		<button id="submitreply" type="submit" class="btn btn-sm btn-danger btn-block" >댓글입력</button>
+			</td>
 		</tr>
     </tbody>
     </table>
-	<iframe width="100%" onload="resizeIframe(this)" src="reply.jsp" frameborder="0">
-	</iframe>
+	</form>
 <%-- 
     <div>
 		<button type="button" class="btn btn-sm btn-danger " id="bulletinwrite" style="float: right;">글쓰기</button>

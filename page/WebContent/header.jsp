@@ -27,6 +27,31 @@ pageEncoding="UTF-8"  %>
       <jsp:param name="callpage" value="header.jsp" />
     </jsp:include> --%>
 
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			<%
+			String board = (String)session.getAttribute("board"); 
+			if(board =="soccer"){
+			%>
+				$("#socctab").css("font-weight", "bold");
+				$("#socctab").css("color", "rgba(0, 0, 0, 0.7)");
+			<%
+			}
+			else if(board =="baseball"){ %>
+				$("#basetab").css("font-weight", "bold");
+				$("#basetab").css("color", "rgba(0, 0, 0, 0.7)");
+			<%
+			}
+			else if(board =="basketball"){ %>
+				$("#basktab").css("font-weight", "bold");
+				$("#basktab").css("color", "rgba(0, 0, 0, 0.7)");
+			<%
+			}
+			else if(board == "index"){ 
+			}%>
+		})
+	</script>
   </head>
 
   <body>
@@ -40,14 +65,14 @@ pageEncoding="UTF-8"  %>
           </button>
           <div class="collapse navbar-collapse" id="navbarsExample09">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item active" id="menuButton">
-                <a class="nav-link" href="index_soccer.jsp" target="_self">축구<span class="sr-only">(current)</span></a>
+              <li class="nav-item" id="menuButton">
+                <a class="nav-link" href="index_soccer.jsp" target="_self" id="socctab">축구<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item" id="menuButton">
-                <a class="nav-link" href="index_basketball.jsp" target="_self">농구</a>
+                <a class="nav-link" href="index_basketball.jsp" target="_self" id="basktab">농구</a>
               </li>
               <li class="nav-item" id="menuButton">
-                <a class="nav-link" href="index_baseball.jsp" target="_self" >야구</a>
+                <a class="nav-link" href="index_baseball.jsp" target="_self" id="basetab">야구</a>
               </li>
             </ul>
             <form class="form-inline my-2 my-md-0" style="margin-left: 20px;">
