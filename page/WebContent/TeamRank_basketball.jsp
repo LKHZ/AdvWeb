@@ -20,12 +20,6 @@
   }
 }
 
-#MyModal {}
-
-.modal-body {
-  overflow-x: auto;
-}
-
 
 .Pikaday{
 	z-index: 100000;
@@ -172,33 +166,12 @@
         				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
       				</div>
       				<div class="modal-body">
-    					
-    					<div>
-    					<%TG.TeamGame(5416,"2017-01-01", "2017-12-01"); %>
-    					<%TG.setTeamNum(0); %>
-    						<table class="table table-sm">
-    							<thead>
-									<tr>
-										<th scope="col" id="gc"></th>
-										<th scope="col" id="awayteam">상대팀명</th>	
-										<th scope="col" id="score">점수</th>
-										<%for(int x=0; x<TG.getMatchCount(); x++){ %>
-										<th scope="col" id="ss<%=x%>"><%=x%>세트 점수</th>	
-										<%} %>	
-									</tr>
-								</thead>	
-    							<tbody>
-									<tr>
-										<th scope="row"><%=0%></th>
-										<td><%=TG.getAwayTeamName() %></td>
-										<td><%=TG.getAwayTeamScore() %></td>
-										<%for(int x=0; x<TG.getMatchCount(); x++){ %>
-										<%TG.setMatchNum(x); %>
-											<%=TG.getMatchaScore() %>
-										<%} %>	
-									</tr>						
-								</tbody>
-    						</table>
+    					<div style="display:inline-block;">
+        					<label for="start">Start:</label>
+        					<input type="text" id="start<%=i+(j*a)%>"></input>
+        					<label for="end">End:</label>
+        					<input type="text" id="end<%=i+(j*a)%>"> </input>
+        					<button id="button1" onclick="button1_click();"> Search</button>
     					</div>
     				</div>
       				<div class="modal-footer">
@@ -243,7 +216,6 @@
     	        },
     	        startPicker = new Pikaday({
     	            field: document.getElementById('start<%=i+(j*a)%>'),
-    	            format: 'D/M/YYYY',
     	            minDate: new Date(2017,0,1),
     	            maxDate: new Date(2020, 12, 31),
     	            onSelect: function() {
@@ -253,7 +225,6 @@
     	        }),
     	        endPicker = new Pikaday({
     	            field: document.getElementById('end<%=i+(j*a)%>'),
-    	            format: 'D/M/YYYY',
     	            minDate: new Date(2017, 0 , 1),
     	            maxDate: new Date(2020, 12, 31),
     	            onSelect: function() {

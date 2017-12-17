@@ -19,7 +19,7 @@ public class ReplyBean {
 	private int boardNum = 0;
 	private int bulletinNum = 0;
 
-	private final String dbpasswd = "1313";
+	private final String dbpasswd = "111111";
 
 
 	public String getContent() {
@@ -57,25 +57,25 @@ public class ReplyBean {
 	public ArrayList<ReplyDTO> replyList(int bulletinNum) {
 		ArrayList<ReplyDTO> replys = new ArrayList<ReplyDTO>();
 		
-		// 데이터베이스 연결 관련 변수 선언
+		// �뜲�씠�꽣踰좎씠�뒪 �뿰寃� 愿��젴 蹂��닔 �꽑�뼵
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
-		// 데이터베이스 연결관련 정보를 문자열로 선언
+		// �뜲�씠�꽣踰좎씠�뒪 �뿰寃곌��젴 �젙蹂대�� 臾몄옄�뿴濡� �꽑�뼵
 		String jdbc_driver = "com.mysql.jdbc.Driver";
 		String jdbc_url = "jdbc:mysql://localhost/ssbdb?useSSL=false&useUnicode=true&characterEncoding=UTF-8";
 
-		// 현재 시간 받아오기
+		// �쁽�옱 �떆媛� 諛쏆븘�삤湲�
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 
 		try {
-			// JDBC 드라이버 로드
+			// JDBC �뱶�씪�씠踰� 濡쒕뱶
 			Class.forName(jdbc_driver);
 
-			// 데이터베이스 연결정보를 이용해 Connection 인스턴스 확보
+			// �뜲�씠�꽣踰좎씠�뒪 �뿰寃곗젙蹂대�� �씠�슜�빐 Connection �씤�뒪�꽩�뒪 �솗蹂�
 			conn = DriverManager.getConnection(jdbc_url, "root", dbpasswd);
 
-			// Connection 클래스의 인스턴스로부터 SQL문 작성을 위한 Statement 준비
+			// Connection �겢�옒�뒪�쓽 �씤�뒪�꽩�뒪濡쒕��꽣 SQL臾� �옉�꽦�쓣 �쐞�븳 Statement 以�鍮�
 
 			String sql = "select c.commentcreatedate, c.commentcontent, m.membernickname,"
 					+ " c.commentid from comment c, member m where c.commentvalid = 1"
@@ -128,19 +128,19 @@ public class ReplyBean {
 			updateReply.setId(create);
 		}
 		else {
-			// 데이터베이스 연결 관련 변수 선언
+			// �뜲�씠�꽣踰좎씠�뒪 �뿰寃� 愿��젴 蹂��닔 �꽑�뼵
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 
-			// 데이터베이스 연결관련 정보를 문자열로 선언
+			// �뜲�씠�꽣踰좎씠�뒪 �뿰寃곌��젴 �젙蹂대�� 臾몄옄�뿴濡� �꽑�뼵
 			String jdbc_driver = "com.mysql.jdbc.Driver";
 			String jdbc_url = "jdbc:mysql://localhost/ssbdb?useSSL=false&useUnicode=true&characterEncoding=UTF-8";
 
 			try {
-				// JDBC 드라이버 로드
+				// JDBC �뱶�씪�씠踰� 濡쒕뱶
 				Class.forName(jdbc_driver);
 
-				// 데이터베이스 연결정보를 이용해 Connection 인스턴스 확보
+				// �뜲�씠�꽣踰좎씠�뒪 �뿰寃곗젙蹂대�� �씠�슜�빐 Connection �씤�뒪�꽩�뒪 �솗蹂�
 				conn = DriverManager.getConnection(jdbc_url, "root", dbpasswd);
 
 				
@@ -193,15 +193,15 @@ public class ReplyBean {
 			updateReply.setId(create);
 		}
 		else {
-			// 데이터베이스 연결 관련 변수 선언
+			// �뜲�씠�꽣踰좎씠�뒪 �뿰寃� 愿��젴 蹂��닔 �꽑�뼵
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 
-			// 데이터베이스 연결관련 정보를 문자열로 선언
+			// �뜲�씠�꽣踰좎씠�뒪 �뿰寃곌��젴 �젙蹂대�� 臾몄옄�뿴濡� �꽑�뼵
 			String jdbc_driver = "com.mysql.jdbc.Driver";
 			String jdbc_url = "jdbc:mysql://localhost/ssbdb?useSSL=false&useUnicode=true&characterEncoding=UTF-8";
 
-			// 현재 시간 받아오기
+			// �쁽�옱 �떆媛� 諛쏆븘�삤湲�
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 			Calendar cal = Calendar.getInstance();
 			String time = sdf.format(cal.getTime());
@@ -221,13 +221,13 @@ public class ReplyBean {
 			Timestamp timestamp = new Timestamp(date.getTime());
 
 			try {
-				// JDBC 드라이버 로드
+				// JDBC �뱶�씪�씠踰� 濡쒕뱶
 				Class.forName(jdbc_driver);
 
-				// 데이터베이스 연결정보를 이용해 Connection 인스턴스 확보
+				// �뜲�씠�꽣踰좎씠�뒪 �뿰寃곗젙蹂대�� �씠�슜�빐 Connection �씤�뒪�꽩�뒪 �솗蹂�
 				conn = DriverManager.getConnection(jdbc_url, "root", dbpasswd);
 
-				// Connection 클래스의 인스턴스로부터 SQL문 작성을 위한 Statement 준비
+				// Connection �겢�옒�뒪�쓽 �씤�뒪�꽩�뒪濡쒕��꽣 SQL臾� �옉�꽦�쓣 �쐞�븳 Statement 以�鍮�
 				
 				String sql = "insert into comment(commentcontent, commentvalid"
 						+ ", commentcreatedate, memberid, boardid, bulletinid)"

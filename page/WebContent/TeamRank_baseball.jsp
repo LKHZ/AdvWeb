@@ -6,18 +6,48 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style>
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 600px;
+    margin: 30px auto;
+  }
+}
+@media (min-width: 768px) {
+  .modal-xl {
+    width: 90%;
+   max-width:1200px;
+  }
+}
+
+
+.Pikaday{
+	z-index: 100000;
+}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sports Score Board</title>
-    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="cssjs/navbar.css" rel="stylesheet">
-    
+  
+    <link rel="stylesheet" href="Pikaday-master/css/pikaday.css">
+    <link rel="stylesheet" href="Pikaday-master/css/site.css">
+	
+	<link href="cssjs/navbar.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="cssjs/style.css">
     <script src = "jquery-3.2.1.js"></script>
-    <script src = "DataTables/datatables.min.js"></script>
-    <script src = "Datatables/datatables.js"></script>
+    
+    
+    <jsp:useBean class = "ssb.makeview.TSVBean" id="TSV" scope = "page"/></jsp>
+    <jsp:useBean class = "ssb.makeview.TGBean" id="TG" scope = "page"/></jsp>
+    <script type="text/javascript">    
+   		function clickTrEvent(trObj){
+   	 		$("#myModal"+trObj.id).modal('show');
+    	}
+        
+	</script>
+
 </head>
 <body>
-<jsp:useBean class = "ssb.makeview.TSVBean" id="TSV" scope = "page"/>
 	<main role="main">
 		<%@ page import="java.util.*"%>
 		<%TSV.setSportsnum(2); %>
@@ -41,9 +71,10 @@
           for(int j=0; j<TSV.getSportsnum(); j++){
           		if(j==0){
           			%>
-                     <div class = "carousel-item active">
+                 <div class = "carousel-item active">
 				
-				<td><% TSV.setleagueNum(j); %></td>
+				<% TSV.setleagueNum(j); 
+				int a = TSV.getSize();%>
 				&nbsp;<%=TSV.getLeagueName() %>
 				<table class="table table-sm">
 					<thead>
@@ -61,7 +92,7 @@
 						<%				
 						for ( int i = 0; i <TSV.getSize() ; i++ ) {
 						%>
-						<tr>
+						<tr id=<%=i+(j*a)%> onclick = "javascript:clickTrEvent(this)">
 							<th scope="row"><%=i+1%></th>
 							<td><%=TSV.getTeamName(i) %>
 							<td><%=TSV.getTeamWin(i) %></td>
@@ -79,8 +110,10 @@
                     <%	}
           		else{
           		%>
-          			 <div class = "carousel-item">
-				<% TSV.setleagueNum(j); %>
+          		<div class = "carousel-item">
+				<%int a = TSV.getSize();
+				TSV.setleagueNum(j); 
+				%>
 				&nbsp;<%=TSV.getLeagueName() %>
 				<table class="table table-sm">
 					<thead>
@@ -98,7 +131,7 @@
 						<%				
 						for ( int i = 0; i <TSV.getSize() ; i++ ) {
 						%>
-						<tr>
+						<tr id=<%=i+(j*a)%> onclick = "javascript:clickTrEvent(this)">
 							<th scope="row"><%=i+1%></th>
 							<td><%=TSV.getTeamName(i) %>
 							<td><%=TSV.getTeamWin(i) %></td>
@@ -127,9 +160,99 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
+                  <%for(int j=0; j<TSV.getSportsnum(); j++){
+        	int a = TSV.getSize();
+        	TSV.setleagueNum(j);
+        	for( int i = 0; i <TSV.getSize() ; i++ ) { %>
+       	<div id= "myModal<%=i+(j*a)%>" class="modal fade">
+  			<div class="modal-dialog modal-xl">
+    			<div class="modal-content">
+      				<div class="modal-header">
+        				<h4 class="modal-title"> <%=TSV.getTeamName(i)%></h4>
+        				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      				</div>
+      				<div class="modal-body">
+    					<div style="display:inline-block;">
+        					<label for="start">Start:</label>
+        					<input type="text" id="start<%=i+(j*a)%>"></input>
+        					<label for="end">End:</label>
+        					<input type="text" id="end<%=i+(j*a)%>"> </input>
+        					<button id="button1" onclick="button1_click();"> Search</button>
+    					</div>
+    				</div>
+      				<div class="modal-footer">
+        				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        				<button type="button" class="btn btn-primary">Save changes</button>
+      				</div>
+    			</div><!-- /.modal-content -->
+  			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		    
+		<%} }%>
       </main>
       
       
 
 </body>
+
+    <script src="Pikaday-master/pikaday.js"></script>
+    
+    <%int a;
+    for(int j=0; j<TSV.getSportsnum(); j++){
+    	if(j==0){
+  			TSV.setleagueNum(j);
+			a = TSV.getSize();
+    	}
+    	else{
+    		a = TSV.getSize();
+    		TSV.setleagueNum(j);
+    	}
+    	for( int i = 0; i <TSV.getSize() ; i++ ) {
+    		 %>
+    		 <script>var startDate,
+    	        endDate,
+    	        updateStartDate = function() {
+    	            startPicker.setStartRange(startDate);
+    	            endPicker.setStartRange(startDate);
+    	            endPicker.setMinDate(startDate);
+    	        },
+    	        updateEndDate = function() {
+    	            startPicker.setEndRange(endDate);
+    	            startPicker.setMaxDate(endDate);
+    	            endPicker.setEndRange(endDate);
+    	        },
+    	        startPicker = new Pikaday({
+    	            field: document.getElementById('start<%=i+(j*a)%>'),
+    	            minDate: new Date(2017,0,1),
+    	            maxDate: new Date(2020, 12, 31),
+    	            onSelect: function() {
+    	                startDate = this.getDate();
+    	                updateStartDate();
+    	            }
+    	        }),
+    	        endPicker = new Pikaday({
+    	            field: document.getElementById('end<%=i+(j*a)%>'),
+    	            minDate: new Date(2017, 0 , 1),
+    	            maxDate: new Date(2020, 12, 31),
+    	            onSelect: function() {
+    	                endDate = this.getDate();
+    	                updateEndDate();
+    	            }
+    	        }),
+    	        _startDate = startPicker.getDate(),
+    	        _endDate = endPicker.getDate();
+
+    	        if (_startDate) {
+    	            startDate = _startDate;
+    	            updateStartDate();
+    	        }
+
+    	        if (_endDate) {
+    	            endDate = _endDate;
+    	            updateEndDate();
+    	        }
+    	        </script>
+    	<%}
+    }
+    	%>
 </html>

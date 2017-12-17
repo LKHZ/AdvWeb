@@ -18,7 +18,7 @@ public class JoinBean {
 	private boolean checkedUserid;
 	private boolean checkedNick;
 	
-	private final String dbpasswd = "1313";
+	private final String dbpasswd = "111111";
 	
 
 	public String getPasswdagain() {
@@ -76,13 +76,10 @@ public class JoinBean {
 			// JDBC �뱶�씪�씠踰� 濡쒕뱶
 			Class.forName(jdbc_driver);
 
-<<<<<<< HEAD
+
 			// �뜲�씠�꽣踰좎씠�뒪 �뿰寃곗젙蹂대�� �씠�슜�빐 Connection �씤�뒪�꽩�뒪 �솗蹂�
 			conn = DriverManager.getConnection(jdbc_url, "root", "111111");
-=======
-			// 데이터베이스 연결정보를 이용해 Connection 인스턴스 확보
-			conn = DriverManager.getConnection(jdbc_url, "root", dbpasswd);
->>>>>>> branch 'master' of https://Getjy@bitbucket.org/TOT0Ro/ssb.git
+
 
 			// Connection �겢�옒�뒪�쓽 �씤�뒪�꽩�뒪濡쒕��꽣 SQL臾� �옉�꽦�쓣 �쐞�븳 Statement 以�鍮�
 			String sql = "select memberident from member";
@@ -129,13 +126,9 @@ public class JoinBean {
 			// JDBC �뱶�씪�씠踰� 濡쒕뱶
 			Class.forName(jdbc_driver);
 
-<<<<<<< HEAD
 			// �뜲�씠�꽣踰좎씠�뒪 �뿰寃곗젙蹂대�� �씠�슜�빐 Connection �씤�뒪�꽩�뒪 �솗蹂�
 			conn = DriverManager.getConnection(jdbc_url, "root", "111111");
-=======
-			// 데이터베이스 연결정보를 이용해 Connection 인스턴스 확보
-			conn = DriverManager.getConnection(jdbc_url, "root", dbpasswd);
->>>>>>> branch 'master' of https://Getjy@bitbucket.org/TOT0Ro/ssb.git
+
 
 			// Connection �겢�옒�뒪�쓽 �씤�뒪�꽩�뒪濡쒕��꽣 SQL臾� �옉�꽦�쓣 �쐞�븳 Statement 以�鍮�
 			String sql = "select membernickname from member";
@@ -222,13 +215,8 @@ public class JoinBean {
 				// JDBC �뱶�씪�씠踰� 濡쒕뱶
 				Class.forName(jdbc_driver);
 
-<<<<<<< HEAD
 				// �뜲�씠�꽣踰좎씠�뒪 �뿰寃곗젙蹂대�� �씠�슜�빐 Connection �씤�뒪�꽩�뒪 �솗蹂�
 				conn = DriverManager.getConnection(jdbc_url, "root", "111111");
-=======
-				// 데이터베이스 연결정보를 이용해 Connection 인스턴스 확보
-				conn = DriverManager.getConnection(jdbc_url, "root", dbpasswd);
->>>>>>> branch 'master' of https://Getjy@bitbucket.org/TOT0Ro/ssb.git
 
 				// Connection �겢�옒�뒪�쓽 �씤�뒪�꽩�뒪濡쒕��꽣 SQL臾� �옉�꽦�쓣 �쐞�븳 Statement 以�鍮�
 				
