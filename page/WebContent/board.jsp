@@ -79,10 +79,10 @@
 		<table class="table table-sm table-striped">
  		<thead class="thead-dark">
   			<tr>
-    			<th scope="col" id="no">No</th>
-    			<th scope="col" id="sub" style="text-align: center;">Subject</th>
-        		<th scope="col" id="nam">Name</th>
-  				<th scope="col" id="dat">Date</th>
+    			<th scope="col" width="5%">No</th>
+    			<th scope="col" width="55%" style="text-align: center;">Subject</th>
+        		<th scope="col" width="20%">Name</th>
+  				<th scope="col" width="20%">Date</th>
 			</tr>
     	</thead>
     	<tbody>
@@ -102,25 +102,25 @@
   				<th scope="row">4</th>
   				<td><a href="bulletin.jsp" target="_self">sub1111</a></td>
   				<td>lee</td>
-	  			<td>2017.12.07</td>
+	  			<td>2017.12.07  17:54</td>
 			</tr>
 			<tr>
   				<th scope="row">3</th>
   				<td><a href="#">sub2222</a></td>
   				<td>lee</td>
-	  			<td>2017.12.07</td>
+	  			<td>2017.12.07  17:54</td>
 			</tr>
 			<tr>
   				<th scope="row">2</th>
   				<td><a href="#">sub33333</a></td>
   				<td>lee</td>
-	  			<td>2017.12.07</td>
+	  			<td>2017.12.07  17:54</td>
 			</tr>
 			<tr>
   				<th scope="row">1</th>
   				<td><a href="#">sub33333</a></td>
   				<td>lee</td>
-  				<td>2017.12.07</td>
+	  			<td>2017.12.07  17:54</td>
 			</tr>
 	    </tbody>
 		</table>
