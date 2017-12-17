@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ page import="ssb.content.BulletinDTO" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -42,6 +45,18 @@
             	%>
             });
         });
+        $(document).ready(function() {
+        	<%
+        		int i = Integer.parseInt(request.getParameter("read"));
+        	
+	        	@SuppressWarnings("unchecked")
+        		ArrayList<BulletinDTO> bulletins = (ArrayList<BulletinDTO>)session.getAttribute("bulletins");
+        		
+        		BulletinDTO bulletin = bulletins.get(i);
+        		
+        		session.setAttribute("read", new ArrayList<BulletinDTO>());
+        	%>
+        });
     </script>
     
     <style>
@@ -79,29 +94,19 @@
 	<table class="table table-sm">
  	<thead class="thead-dark">
   		<tr>
-    		<th scope="col" id="bulletinno">1123</th>
-    		<th colspan="2" scope="col"  id="bulletintitle">제목이다~~~~~~~~</th>
+    		<th scope="col" id="bulletinno"><%= bulletin.getId() %></th>
+    		<th colspan="2" scope="col"  id="bulletintitle"><%= bulletin.getTitle() %></th>
 		</tr>
     </thead>
     <tbody>
     	<tr>
-    		<td colspan="2" id="writer_1">얄리얄리(닉네임)</td>
-    		<td>2017.12.14</td>
+    		<td colspan="2" id="writer_1"><%= bulletin.getUserid() %></td>
+    		<td><%= bulletin.getDate() %></td>
     	</tr>
 		<tr>
   			<td colspan="3">
 <pre>
-글 내용입니다.
-살어리 살어리랏다 쳥산(靑山)애 살어리랏다
-
-멀위랑 다래랑 먹고 쳥산(靑山)애 살어리랏다
-얄리 얄리 얄랑셩 얄라리 얄라
-우러라 우러라 새여 자고 니러 우러라 새여
-널라와 시름 한 나도 자고 니러 우리노라
-얄리 얄리 얄라셩 얄라리 얄라
-가던 새 가던 새 본다 믈아래 가던 새 본다
-잉무든 장글란 가지고 믈아래 가던 새 본다
-얄리 얄리 얄라셩 얄라리 얄라
+<%= bulletin.getContent() %>
 </pre>
   			</td>	
 		</tr>

@@ -55,7 +55,7 @@ public class BoardBean {
 
 		// 데이터베이스 연결관련 정보를 문자열로 선언
 		String jdbc_driver = "com.mysql.jdbc.Driver";
-		String jdbc_url = "jdbc:mysql://localhost/ssbdb?useSSL=false&useUnicode=true&characterEncoding=ISO-8859-1";
+		String jdbc_url = "jdbc:mysql://localhost/ssbdb?useSSL=false&useUnicode=true&characterEncoding=UTF-8";
 
 		// 현재 시간 받아오기
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd hh:mm");
@@ -136,7 +136,7 @@ public class BoardBean {
 
 			// 데이터베이스 연결관련 정보를 문자열로 선언
 			String jdbc_driver = "com.mysql.jdbc.Driver";
-			String jdbc_url = "jdbc:mysql://localhost/ssbdb?useSSL=false&useUnicode=true&characterEncoding=ISO-8859-1";
+			String jdbc_url = "jdbc:mysql://localhost/ssbdb?useSSL=false&useUnicode=true&characterEncoding=UTF-8";
 
 			// 현재 시간 받아오기
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");

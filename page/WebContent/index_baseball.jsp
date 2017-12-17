@@ -53,7 +53,7 @@ pageEncoding="UTF-8"  %>
       		</div>
       		
       		<div class="col-lg-8">
-						<iframe width="100%" height="1000px" src="board.jsp" frameborder="0">
+						<iframe width="100%" height="1000px" src="board.jsp?page=1" frameborder="0">
  	     		
 						</iframe>
       		</div>

@@ -46,7 +46,10 @@
     </script>
 	<%
 		String boardName = (String)session.getAttribute("board");
-		int pageNum = (int)session.getAttribute("page");
+		int pageNum = Integer.parseInt(request.getParameter("page"));
+		if(!(pageNum > 1)) {
+			pageNum = 1;
+		}
 		int boardNum;
 		
 		if(boardName.equals("baseball")) {
@@ -72,7 +75,36 @@
 		ArrayList<BulletinDTO> bulletins;
 
 		bulletins = board.bulletinList(boardNum);
+		
+		session.setAttribute("bulletins", bulletins);
+		
 	%>
+
+	<script>
+	
+		
+		function clickBulletinEvent() {
+			<%
+//				BulletinDTO bulletin = bulletins.get(i+(pageNum-1)*10);
+//				session.setAttribute("read", bulletin);
+			%>
+			window.open("bulletin.jsp", "_self");
+		}
+
+		function clickPageEvent(np) {
+			if(np = 1 && pageNum < bulletins.size()/10+1) {
+				<%
+					session.setAttribute("page", pageNum + 1);
+				%>
+			}
+			else if(np = 0 && pageNum > 1){
+				<%
+					session.setAttribute("page", pageNum - 1);
+				%>
+			}
+			window.open("board.jsp", "_self");
+		}
+	</script>
 </head>
 <body>
     <main role="main">
@@ -87,41 +119,18 @@
     	</thead>
     	<tbody>
 			<%
-				for(int i=0+(pageNum-1)*20; i<(bulletins.size()<20?bulletins.size():20)+(pageNum-1)*20; i++) {
+				int pageUnit = (pageNum-1)*10;
+				for(int i=0+pageUnit; i<(bulletins.size()<10?bulletins.size():10)+pageUnit; i++) {
 			%>
-				<script> var vv = <%= i %>; alert(i); </script>
 				<tr>
 					<th scope="row"><%= bulletins.get(i).getId() %></th>
-					<td><a href="bulletin.jsp" target="_serlf"><%= bulletins.get(i).getTitle() %></a></td>
+					<% BulletinDTO bllt = bulletins.get(i); %>
+					<td><a href="bulletin.jsp?read=<%= i %>" target="_self"><%= bulletins.get(i).getTitle() %></a></td>
 					<td><%= bulletins.get(i).getUserid() %></td>
-					<td><%= bulletins.get(i).getDate() %></td>
+					<td><%= bulletins.get(i).getDate() %></td> 
 				</tr>
 			<% } %>
 
-			<tr>
-  				<th scope="row">4</th>
-  				<td><a href="bulletin.jsp" target="_self">sub1111</a></td>
-  				<td>lee</td>
-	  			<td>2017.12.07</td>
-			</tr>
-			<tr>
-  				<th scope="row">3</th>
-  				<td><a href="#">sub2222</a></td>
-  				<td>lee</td>
-	  			<td>2017.12.07</td>
-			</tr>
-			<tr>
-  				<th scope="row">2</th>
-  				<td><a href="#">sub33333</a></td>
-  				<td>lee</td>
-	  			<td>2017.12.07</td>
-			</tr>
-			<tr>
-  				<th scope="row">1</th>
-  				<td><a href="#">sub33333</a></td>
-  				<td>lee</td>
-  				<td>2017.12.07</td>
-			</tr>
 	    </tbody>
 		</table>
 	    <hr>
@@ -131,20 +140,41 @@
   			<ul class="pagination justify-content-center">
   				<!-- 왼쪽화살표 -->
     			<li class="page-item">
-      				<a class="page-link" href="#" aria-label="Previous">
+      				<a class="page-link" href="board.jsp?page=1" target="_self" aria-label="Lirst">
         				<span aria-hidden="true">&laquo;</span>
-        				<span class="sr-only">Previous</span>
+        				<span class="sr-only">First</span>
       				</a>
     			</li>
     			<!-- pagination -->
-    			<li class="page-item"><a class="page-link" href="#">1</a></li>
-    			<li class="page-item"><a class="page-link" href="#">2</a></li>
-    			<li class="page-item"><a class="page-link" href="#">3</a></li>
-    			<!-- 오른쪽화살표 -->
+				<%
+					int pageSize = bulletins.size()/10+1;
+					int startPage;
+					int endPage;
+					if(pageNum < 4) {
+						startPage = 1;
+						endPage = (pageSize < 5 ? pageSize : 5);
+					}
+					else if(pageNum > pageSize - 3) {
+						startPage = pageSize - 4;
+						endPage = pageSize;
+					}
+					else {
+						startPage = pageNum - 2;
+						endPage = pageNum + 2;
+					}
+					for(int j=startPage; j<=endPage; j++) {
+				%>
+    			<li class="page-item"><a class="page-link" href="board.jsp?page=<%= j %>" target="_self"><%= j %></a></li>
+					
+    			<% } %>
+    			<!--<li class="page-item"><a href="#">1</a></li>
+    			<li class="page-item"><a href="#">2</a></li>
+    			<li class="page-item"><a href="#">3</a></li> -->
+					<!-- 오른쪽화살표 -->
     			<li class="page-item">
-      				<a class="page-link" href="#" aria-label="Next">
+      				<a class="page-link" href="board.jsp?page=<%= pageSize %>" target="_self" aria-label="Last">
         				<span aria-hidden="true">&raquo;</span>
-        				<span class="sr-only">Next</span>
+        				<span class="sr-only">Last</span>
       				</a>
     			</li>
   			</ul>

@@ -7,6 +7,7 @@ public class BulletinDTO {
 	private String userid;
 	private int boardNum = 0;
 	private String date;
+	
 	public int getId() {
 		return id;
 	}
@@ -43,6 +44,18 @@ public class BulletinDTO {
 	public void setDate(String date) {
 		this.date = date;
 	}
+	
+//	public BulletinDTO() {
+//		
+//	}
+//	public BulletinDTO(BulletinDTO bulletin) {
+//		this.id = bulletin.getId();
+//		this.title = new String(bulletin.getTitle());
+//		this.content = new String(bulletin.getContent());
+//		this.userid = new String(bulletin.getUserid());
+//		this.boardNum = bulletin.getBoardNum();
+//		this.date = new String(bulletin.getDate());
+//	}
 	
 	
 }
