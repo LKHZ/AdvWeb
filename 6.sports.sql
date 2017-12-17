@@ -4,4 +4,4 @@ CREATE TABLE IF NOT EXISTS `ssbdb`.`sports` (
   PRIMARY KEY (`sportsid`),
   UNIQUE INDEX `sportsid_UNIQUE` (`sportsid` ASC),
   UNIQUE INDEX `sportsname_UNIQUE` (`sportsname` ASC))
-ENGINE = InnoDB
+ENGINE = InnoDB;

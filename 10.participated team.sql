@@ -22,3 +22,4 @@ CREATE TABLE IF NOT EXISTS `ssbdb`.`participated team` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
+;

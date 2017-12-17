@@ -35,7 +35,7 @@ pageEncoding="UTF-8" %>
           <input type="password" class="form-control" name="passwd" placeholder="비밀번호" required>
           <div class="checkbox">
             <label>
-              <input type="checkbox" value="remember-me">로그인 상태 유지
+              <input type="checkbox" name="autologin" value="remember-me">로그인 상태 유지
             </label>
           </div>
           <button type="submit" class="btn btn-lg btn-danger btn-block">로그인</button>

@@ -1,29 +1,12 @@
-<!-- 게시판 테이블 -->
-
 td a{ color: black;	}
 td a:visited{ color: black;	}
 td a:link{ color: black;	}
 td a:hover{ color: black;	}
 td a:active{ color: black;	}
 
-<!-- 시즌 순위 -->
-.ranking{
-}
-
-
-
-
-
-<!-- 순위 컬럼 너비 -->
-#ran{ width: 8%; 	}
-#team{ width: 45%;	}
-#win{ width: 8%; 	}
-#lose{ width: 8%;	}
-#draw{ width: 17%;	}
-#pervic{ width: 14%;}
-<!-- 게시판 컬럼 너비 -->
-#no{ width: 10%; }	
-#cat{width: 5%;	 }
-#sub{width: 50%; }
-#nam{width: 15%;	}
-#dat{width: auto; }
+#ran{ 		width: 8%; 	}
+#team{ 		width: 45%;	}
+#win{ 		width: 8%; 	}
+#lose{ 		width: 8%;	}
+#draw{ 		width: 17%;	}
+#pervic{ 	width: 14%; }

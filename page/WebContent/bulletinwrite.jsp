@@ -33,12 +33,6 @@ pageEncoding="UTF-8"  %>
         	<input type=hidden name=board value=<%= session.getAttribute("board") %>>
  	     	<table class="table">
   				<tbody>
-  					<tr>
-  						<td>카테고리 &nbsp;<select name="category">
-  							<option value="sports">Sports</option>	
-  							<option value="chat" selected="selected">chat</option>
-  						</select></td>
-  					</tr>
     				<tr>
     					<td><input type="text" class="form-control" name="title" placeholder="글 제목" maxlength="50"></td>
     				</tr>

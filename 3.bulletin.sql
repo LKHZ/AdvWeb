@@ -20,4 +20,4 @@ CREATE TABLE IF NOT EXISTS `ssbdb`.`bulletin` (
     REFERENCES `ssbdb`.`board` (`boardid`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB
+ENGINE = InnoDB;

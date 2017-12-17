@@ -42,6 +42,26 @@ pageEncoding="UTF-8" %>
         //connect.setPasswd(signin.getPasswd());
         //connect.setConnect(true);
         //session.setAttribute("cntUser", connect);
+      String autologin[] = request.getParameterValues("autologin");
+      if(autologin != null) {
+    	  Cookie cookie[] = new Cookie[4];
+    	  cookie[0] = new Cookie("autologin", "OK");
+    	  cookie[1] = new Cookie("userid", signin.getUserid());
+    	  cookie[2] = new Cookie("passwd", signin.getPasswd());
+    	  cookie[3] = new Cookie("userseq", Integer.toString(userseq));
+
+		  for(int i=0; i<4; i++){
+			  cookie[i].setMaxAge(60*60); // 한시간 유효
+			  response.addCookie(cookie[i]); // 쿠키 추가
+		  }
+		  %>
+	      <script>
+	        window.alert("자동로그인.");
+	      </script>
+	      
+	    <%
+      }
+      
       session.setAttribute("logon", "true");
       session.setAttribute("userid", signin.getUserid());
       session.setAttribute("passwd", signin.getPasswd());

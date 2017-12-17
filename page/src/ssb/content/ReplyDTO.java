@@ -1,24 +1,17 @@
 package ssb.content;
 
-public class BulletinDTO {
+public class ReplyDTO {
 	private int id;
-	private String title;
 	private String content;
 	private String userid;
+	private int bulletinNum = 0;
 	private int boardNum = 0;
 	private String date;
-	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
 	}
 	public String getContent() {
 		return content;
@@ -31,6 +24,12 @@ public class BulletinDTO {
 	}
 	public void setUserid(String userid) {
 		this.userid = userid;
+	}
+	public int getBulletinNum() {
+		return bulletinNum;
+	}
+	public void setBulletinNum(int bulletinNum) {
+		this.bulletinNum = bulletinNum;
 	}
 	public int getBoardNum() {
 		return boardNum;
@@ -45,17 +44,6 @@ public class BulletinDTO {
 		this.date = date;
 	}
 	
-//	public BulletinDTO() {
-//		
-//	}
-//	public BulletinDTO(BulletinDTO bulletin) {
-//		this.id = bulletin.getId();
-//		this.title = new String(bulletin.getTitle());
-//		this.content = new String(bulletin.getContent());
-//		this.userid = new String(bulletin.getUserid());
-//		this.boardNum = bulletin.getBoardNum();
-//		this.date = new String(bulletin.getDate());
-//	}
 	
 	
 }

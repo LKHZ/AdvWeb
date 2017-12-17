@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
+
+<%@ page import="ssb.content.BulletinDTO" %>
+<%@ page import="java.util.ArrayList" %>
+
+<jsp:useBean id="board" class="ssb.dbmanage.BoardBean" scope="page" />
+<jsp:setProperty name="board" property="*" />
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,6 +23,7 @@
     <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="cssjs/navbar.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="cssjs/style.css">
+    <link type="text/css" rel="stylesheet" href="cssjs/board.css">
     <script src = "jquery-3.2.1.js"></script>
     <script>
     	//var board = ;
@@ -35,54 +44,157 @@
             });
         });
     </script>
+    <style>
+    	.page-item-custom{
+    		width:43px;
+    	}
+    </style>
+	<%
+		String boardName = (String)session.getAttribute("board");
+		int pageNum = Integer.parseInt(request.getParameter("page"));
+		
+		session.setAttribute("page", pageNum);
+		if(!(pageNum > 1)) {
+			pageNum = 1;
+		}
+		
+		int boardNum;
+		if(boardName.equals("baseball")) {
+			boardNum = 1;
+		}
+		else if(boardName.equals("basketball")) {
+			boardNum = 2;
+		}
+		else if(boardName.equals("soccer")) {
+			boardNum = 3;
+		}
+		else {
+			boardNum = 0;
+			%>
+				<script>
+					window.alert("게시판이 선택되지 않았습니다." + <%= boardName %> + "   " + <%= boardNum %>);
+					window.open("board.jsp", "_self");
+				</script>
+			<%
+			return;
+		}
+		
+		ArrayList<BulletinDTO> bulletins;
+
+		bulletins = board.bulletinList(boardNum);
+		
+		session.setAttribute("bulletins", bulletins);
+		
+	%>
+
+	<script>
+	
+		
+		function clickBulletinEvent() {
+			<%
+//				BulletinDTO bulletin = bulletins.get(i+(pageNum-1)*10);
+//				session.setAttribute("read", bulletin);
+			%>
+			window.open("bulletin.jsp", "_self");
+		}
+
+		function clickPageEvent(np) {
+			if(np = 1 && pageNum < bulletins.size()/10+1) {
+				<%
+					session.setAttribute("page", pageNum + 1);
+				%>
+			}
+			else if(np = 0 && pageNum > 1){
+				<%
+					session.setAttribute("page", pageNum - 1);
+				%>
+			}
+			window.open("board.jsp", "_self");
+		}
+	</script>
 </head>
 <body>
     <main role="main">
-	<table class="table table-sm table-striped">
- 	<thead class="thead-dark">
-  		<tr>
-    		<th scope="col" id="no">No</th>
-    		<th scope="col" id="cat">Cat</th>
-    		<th scope="col" id="sub" style="text-align: center;">Subject</th>
-        	<th scope="col" id="nam">Name</th>
-  			<th scope="col" id="dat">Date</th>
-		</tr>
-    </thead>
-    <tbody>
-		<tr>
-  			<th scope="row">1</th>
-  			<td>Sport</td>
-  			<td><a href="bulletin.jsp" target="_self">sub1111</a></td>
-  			<td>lee</td>
-  			<td>2017.12.07</td>
-		</tr>
-		<tr>
-  			<th scope="row">2</th>
-  			<td>Sport</td>
-  			<td><a href="#">sub2222</a></td>
-  			<td>lee</td>
-  			<td>2017.12.07</td>
-		</tr>
-		<tr>
-  			<th scope="row">3</th>
-  			<td>Sport</td>
-  			<td><a href="#">sub33333</a></td>
-  			<td>lee</td>
-  			<td>2017.12.07</td>
-		</tr>
-		<tr>
-  			<th scope="row">4</th>
-  			<td>Sport</td>
-  			<td><a href="#">sub33333</a></td>
-  			<td>lee</td>
-  			<td>2017.12.07</td>
-		</tr>
-    </tbody>
-    </table>
+		<table class="table table-sm table-striped table-hover">
+ 		<thead class="thead-dark">
+  			<tr>
+    			<th scope="col" width="8%">No</th>
+    			<th scope="col" width="52%" style="text-align: center;">Subject</th>
+        		<th scope="col" width="20%">Name</th>
+  				<th scope="col" width="20%">Date</th>
+			</tr>
+    	</thead>
+    	<tbody>
+			<%
+				int pageUnit = (pageNum-1)*10;
+				for(int i=0+pageUnit; i<(bulletins.size()-pageUnit<10?bulletins.size()-pageUnit:10)+pageUnit; i++) {
+			%>
+				<tr>
+					<th scope="row"><%= bulletins.get(i).getId() %></th>
+					<% BulletinDTO bllt = bulletins.get(i); %>
+					<td><a href="bulletin.jsp?read=<%= i %>" target="_self"><%= bulletins.get(i).getTitle() %></a></td>
+					<td><%= bulletins.get(i).getUserid() %></td>
+					<td><%= bulletins.get(i).getDate() %></td> 
+				</tr>
+			<% } %>
 
-    <div>
+	    </tbody>
+		</table>
+	    <hr>
+
 		<button type="button" class="btn btn-sm btn-danger " id="bulletinwrite" style="float: right;">글쓰기</button>
-	</div>
+		
+   		<nav aria-label="Page navigation example">
+  			<ul class="pagination justify-content-center">
+  				<!-- 왼쪽화살표 -->
+    			<li class="page-item page-item-custom">
+      				<a class="page-link" href="board.jsp?page=1" target="_self" aria-label="Lirst">
+        				<span aria-hidden="true">&laquo;</span>
+        				<span class="sr-only">First</span>
+      				</a>
+    			</li>
+    			<!-- pagination -->
+				<%
+					int pageSize = bulletins.size()/10+1;
+					int startPage;
+					int endPage;
+					if(pageNum < 6) {
+						startPage = 1;
+						endPage = (pageSize < 9 ? pageSize : 9);
+					}
+					else if(pageNum > pageSize - 5) {
+						startPage = pageSize - 8;
+						endPage = pageSize;
+					}
+					else {
+						startPage = pageNum - 4;
+						endPage = pageNum + 4;
+					}
+					for(int j=startPage; j<=endPage; j++) {
+						if ( j == pageNum ) {
+							%>
+								<li class="page-item page-item-custom active"><a class="page-link" href="board.jsp?page=<%= j %>" target="_self"><%= j %></a></li>
+							<%
+						}
+						else {
+							%>
+    							<li class="page-item page-item-custom"><a class="page-link" href="board.jsp?page=<%= j %>" target="_self"><%= j %></a></li>
+							<% 
+ 		   				} 
+					}
+				%>
+    			<!--<li class="page-item"><a href="#">1</a></li>
+    			<li class="page-item"><a href="#">2</a></li>
+    			<li class="page-item"><a href="#">3</a></li> -->
+					<!-- 오른쪽화살표 -->
+    			<li class="page-item page-item-custom">
+      				<a class="page-link" href="board.jsp?page=<%= pageSize %>" target="_self" aria-label="Last">
+        				<span aria-hidden="true">&raquo;</span>
+        				<span class="sr-only">Last</span>
+      				</a>
+    			</li>
+  			</ul>
+		</nav>
     </main> 
 					
     <!-- Bootstrap core JavaScript
