@@ -12,4 +12,4 @@ CREATE TABLE IF NOT EXISTS `ssbdb`.`game` (
     REFERENCES `ssbdb`.`league` (`leagueid`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB
+ENGINE = InnoDB;

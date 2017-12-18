@@ -11,4 +11,4 @@ CREATE TABLE IF NOT EXISTS `ssbdb`.`team` (
     REFERENCES `ssbdb`.`sports` (`sportsid`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB
+ENGINE = InnoDB;

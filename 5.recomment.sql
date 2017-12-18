@@ -21,4 +21,4 @@ CREATE TABLE IF NOT EXISTS `ssbdb`.`recomment` (
     REFERENCES `ssbdb`.`member` (`memberid`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB
+ENGINE = InnoDB;

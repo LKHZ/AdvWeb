@@ -8,4 +8,4 @@ CREATE TABLE IF NOT EXISTS `ssbdb`.`member` (
   UNIQUE INDEX `id_UNIQUE` (`memberid` ASC),
   UNIQUE INDEX `memberid_UNIQUE` (`memberident` ASC),
   UNIQUE INDEX `membernickname_UNIQUE` (`membernickname` ASC))
-ENGINE = InnoDB
+ENGINE = InnoDB;
