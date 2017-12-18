@@ -1,5 +1,7 @@
+<%@page import="ssb.content.ReplyDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
     
 <jsp:useBean id="reply" class="ssb.dbmanage.ReplyBean" scope="page" />
 <jsp:setProperty name="reply" property="*" />
@@ -51,20 +53,19 @@
 		reply.setUserSeq(Integer.parseInt(userSeq));
 		reply.setBulletinNum(Integer.parseInt(request.getParameter("bulletin")));
 		
-		int num = reply.replyCreate();
+		ReplyDTO updateReply = reply.replyCreate();
 		
-		switch(num) {
-		case 1:
+		if(updateReply.getId() > 0) {
 		%>
 			<script>
 				window.alert("새 글 생성에 성공하였습니다.");
 				document.location.href="bulletin.jsp?read=" + (String)(<%= request.getParameter("read") %>);
 			</script>
 		<%
-			break;
-		default:
+		}
+		else {
 		%>
-			<%= num %>
+			<%= updateReply.getId() %>
 			<%= boardName %>
 			<%= boardNum %>
 			<%= reply.getBulletinNum() %>

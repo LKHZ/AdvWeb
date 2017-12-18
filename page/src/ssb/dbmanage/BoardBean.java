@@ -70,7 +70,7 @@ public class BoardBean {
 			// Connection 클래스의 인스턴스로부터 SQL문 작성을 위한 Statement 준비
 
 			String sql = "select b.bulletinid, b.bulletincreatedate, b.bulletintitle"
-					+ ", b.bulletincontent, m.memberident from bulletin b, member m"
+					+ ", b.bulletincontent, m.membernickname from bulletin b, member m"
 					+ " where b.bulletinvalid = 1 and m.memberid = b.memberid and b.boardid = ? order by b.bulletinid desc";
 			
 			pstmt = conn.prepareStatement(sql);

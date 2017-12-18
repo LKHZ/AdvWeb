@@ -143,6 +143,7 @@
 	    <hr>
 
 		<button type="button" class="btn btn-sm btn-danger " id="bulletinwrite" style="float: right;">글쓰기</button>
+		
    		<nav aria-label="Page navigation example">
   			<ul class="pagination justify-content-center">
   				<!-- 왼쪽화살표 -->

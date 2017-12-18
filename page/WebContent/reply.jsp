@@ -42,6 +42,7 @@
             	%>
             });
         });
+        
     </script>
     <style>
    		#bulletinno th{
@@ -79,7 +80,10 @@
     	ArrayList<ReplyDTO> replys;
     	
     	replys = reply.replyList(bulletinNum);
-    	
+    	if(replys.size() > 0) {	
+	    	session.setAttribute(Integer.toString(bulletinNum), replys.get(0).getId());
+	    	
+    	}
     %>
 </head>
 <body>

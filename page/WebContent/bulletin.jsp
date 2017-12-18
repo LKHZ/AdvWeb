@@ -1,8 +1,13 @@
+<%@page import="ssb.content.ReplyDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
 <%@ page import="ssb.content.BulletinDTO" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="ssb.content.ReplyDTO" %>
+<jsp:useBean id="reply" class="ssb.dbmanage.ReplyBean" scope="page" />
+<jsp:setProperty name="reply" property="*" />
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -81,7 +86,31 @@
 	        	%>
         	});
         });
-        
+        <%--<%
+		ReplyDTO most = reply.mostReply(bulletin.getId());
+		if(most.getId() > (int)session.getAttribute(Integer.toString(bulletin.getId()))) {
+		//if((Integer)(application.getAttribute(
+		//		Integer.toString(bulletin.getId()))) 
+		//		> (Integer)(session.getAttribute(Integer.toString(bulletin.getId())))) {
+	%>
+			$('#replyframe').attr('src', $('#replyframe').attr('src'));
+	<%
+		}
+	%>--%>
+        $(document).ready(function() {
+        	<%
+        		if(session.getAttribute(
+        				Integer.toString(bulletin.getId())) == null) {
+        			session.setAttribute(Integer.toString(bulletin.getId()), 0);
+        		}
+        	%>
+        	var reloadReply = setInterval(function() {
+        		//if(<%= (reply.mostReply(bulletin.getId())).getId()%> > <%= session.getAttribute(Integer.toString(bulletin.getId()))%>) {
+        			$('#replyframe').attr('src', $('#replyframe').attr('src'));
+        			//$('#replyframe').contentWindow.location.reload(true);
+        		//}
+        	}, 2000);
+        });
     </script>
     
     <style>
@@ -203,7 +232,8 @@
 	</main>
       
 		
-	<iframe width="100%" onload="resizeIframe(this)" src="reply.jsp?bulletin=<%= bulletin.getId() %>" frameborder="0">
+	<iframe runat="server" id="replyframe" width="100%" onload="resizeIframe(this)" 
+		src="reply.jsp?bulletin=<%= bulletin.getId() %>" frameborder="0">
 	</iframe>
 	
 	<button type="button" id="listbtn" class="btn btn-sm btn-danger" style="float: left; margin-left: 10px;">목록</button>
